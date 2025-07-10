@@ -1,0 +1,8 @@
+pololu/LSM6@^2.0.1
+Wire
+SPI
+pololu/LPS@^3.1.0
+alfredosystems/AlfredoCRSF@^1.0.1
+ssilverman/QNEthernet@^0.30.1
+pololu/LIS3MDL@^2.0.0
+https://github.com/bolderflight/eigen.git
