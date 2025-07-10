@@ -1,0 +1,3 @@
+[console_scripts]
+drone_tuner = drone_tuner.drone_tuner:main
+

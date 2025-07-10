@@ -1,0 +1,586 @@
+<?xml version="1.0"?>
+  <robot name="spedix_s250q"
+       arm="0.14"
+       thrust2weight="2.8"
+       kf="1.85e-8"
+       km="7.94e-11">
+
+  <!-- Frame Kit: 143g, Motors: 4x21g, ESCs: 4x13.5g, PDB: 22.5g, Flight Controller: 14g, 4S LiPo Battery: ~120g -->
+  <!-- Gemfan Hurricane 51477 3-blade propellers: 4x4.15g -->
+  <!-- Total estimated weight: ~400g (0.40kg) -->
+
+  <!-- Main Body/Frame -->
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 0 0"/>
+      <mass value="0.40"/>  <!-- Total drone mass: 400g including 4S battery -->
+      <inertia ixx="0.0032" ixy="0" ixz="0" iyy="0.0032" iyz="0" izz="0.0058"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry>
+        <!-- Main carbon fiber frame body -->
+        <box size="0.195 0.195 0.045"/>  <!-- Frame dimensions from specs -->
+      </geometry>
+      <material name="carbon_fiber">
+        <color rgba="0.1 0.1 0.1 1"/>  <!-- Dark carbon fiber appearance -->
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0"/>
+      <geometry>
+        <!-- Simplified collision geometry -->
+        <cylinder length="0.045" radius="0.10"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Upper Frame Plate -->
+  <link name="upper_plate">
+    <inertial>
+      <origin xyz="0 0 0"/>
+      <mass value="0.025"/>
+      <inertia ixx="2.5e-5" ixy="0" ixz="0" iyy="2.5e-5" iyz="0" izz="4.5e-5"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry>
+        <box size="0.180 0.180 0.003"/>  <!-- 3mm carbon fiber plate -->
+      </geometry>
+      <material name="carbon_fiber">
+        <color rgba="0.1 0.1 0.1 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Lower Frame Plate -->
+  <link name="lower_plate">
+    <inertial>
+      <origin xyz="0 0 0"/>
+      <mass value="0.025"/>
+      <inertia ixx="2.5e-5" ixy="0" ixz="0" iyy="2.5e-5" iyz="0" izz="4.5e-5"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry>
+        <box size="0.180 0.180 0.003"/>  <!-- 3mm carbon fiber plate -->
+      </geometry>
+      <material name="carbon_fiber">
+        <color rgba="0.1 0.1 0.1 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Front Right Arm -->
+  <link name="arm_fr">
+    <inertial>
+      <origin xyz="0.035 0 0"/>
+      <mass value="0.015"/>
+      <inertia ixx="1.5e-6" ixy="0" ixz="0" iyy="3.5e-5" iyz="0" izz="3.5e-5"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0.035 0 0"/>
+      <geometry>
+        <box size="0.070 0.015 0.004"/>  <!-- Carbon fiber arm -->
+      </geometry>
+      <material name="carbon_fiber">
+        <color rgba="0.1 0.1 0.1 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Front Left Arm -->
+  <link name="arm_fl">
+    <inertial>
+      <origin xyz="0.035 0 0"/>
+      <mass value="0.015"/>
+      <inertia ixx="1.5e-6" ixy="0" ixz="0" iyy="3.5e-5" iyz="0" izz="3.5e-5"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0.035 0 0"/>
+      <geometry>
+        <box size="0.070 0.015 0.004"/>
+      </geometry>
+      <material name="carbon_fiber">
+        <color rgba="0.1 0.1 0.1 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Back Right Arm -->
+  <link name="arm_br">
+    <inertial>
+      <origin xyz="0.035 0 0"/>
+      <mass value="0.015"/>
+      <inertia ixx="1.5e-6" ixy="0" ixz="0" iyy="3.5e-5" iyz="0" izz="3.5e-5"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0.035 0 0"/>
+      <geometry>
+        <box size="0.070 0.015 0.004"/>
+      </geometry>
+      <material name="carbon_fiber">
+        <color rgba="0.1 0.1 0.1 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Back Left Arm -->
+  <link name="arm_bl">
+    <inertial>
+      <origin xyz="0.035 0 0"/>
+      <mass value="0.015"/>
+      <inertia ixx="1.5e-6" ixy="0" ixz="0" iyy="3.5e-5" iyz="0" izz="3.5e-5"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0.035 0 0"/>
+      <geometry>
+        <box size="0.070 0.015 0.004"/>
+      </geometry>
+      <material name="carbon_fiber">
+        <color rgba="0.1 0.1 0.1 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Sunnysky 2204 2300KV Motors -->
+  <!-- Front Right Motor -->
+  <link name="motor_fr">
+    <inertial>
+      <origin xyz="0 0 0"/>
+      <mass value="0.021"/>  <!-- 21g per motor -->
+      <inertia ixx="8.5e-6" ixy="0" ixz="0" iyy="8.5e-6" iyz="0" izz="1.2e-5"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.028" radius="0.0135"/>  <!-- 27mm diameter, 28mm height -->
+      </geometry>
+      <material name="motor_black">
+        <color rgba="0.05 0.05 0.05 1"/>
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.028" radius="0.0135"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Front Left Motor -->
+  <link name="motor_fl">
+    <inertial>
+      <origin xyz="0 0 0"/>
+      <mass value="0.021"/>
+      <inertia ixx="8.5e-6" ixy="0" ixz="0" iyy="8.5e-6" iyz="0" izz="1.2e-5"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.028" radius="0.0135"/>
+      </geometry>
+      <material name="motor_black">
+        <color rgba="0.05 0.05 0.05 1"/>
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.028" radius="0.0135"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Back Right Motor -->
+  <link name="motor_br">
+    <inertial>
+      <origin xyz="0 0 0"/>
+      <mass value="0.021"/>
+      <inertia ixx="8.5e-6" ixy="0" ixz="0" iyy="8.5e-6" iyz="0" izz="1.2e-5"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.028" radius="0.0135"/>
+      </geometry>
+      <material name="motor_black">
+        <color rgba="0.05 0.05 0.05 1"/>
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.028" radius="0.0135"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Back Left Motor -->
+  <link name="motor_bl">
+    <inertial>
+      <origin xyz="0 0 0"/>
+      <mass value="0.021"/>
+      <inertia ixx="8.5e-6" ixy="0" ixz="0" iyy="8.5e-6" iyz="0" izz="1.2e-5"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.028" radius="0.0135"/>
+      </geometry>
+      <material name="motor_black">
+        <color rgba="0.05 0.05 0.05 1"/>
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.028" radius="0.0135"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Gemfan Hurricane 51477 3-blade Propellers -->
+  <!-- Front Right Propeller -->
+  <link name="prop_fr">
+    <inertial>
+      <origin xyz="0 0 0"/>
+      <mass value="0.004"/>  <!-- 4.15g Gemfan Hurricane 51477 -->
+      <inertia ixx="3.2e-6" ixy="0" ixz="0" iyy="3.2e-6" iyz="0" izz="5.8e-6"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.0065" radius="0.0647"/>  <!-- 5.1 inch (129.3mm) diameter, 6.5mm thick -->
+      </geometry>
+      <material name="prop_gemfan">
+        <color rgba="0.8 0.8 0.2 0.9"/>  <!-- Yellow/translucent like Gemfan props -->
+      </material>
+    </visual>
+  </link>
+
+  <!-- Front Left Propeller -->
+  <link name="prop_fl">
+    <inertial>
+      <origin xyz="0 0 0"/>
+      <mass value="0.004"/>  <!-- 4.15g Gemfan Hurricane 51477 -->
+      <inertia ixx="3.2e-6" ixy="0" ixz="0" iyy="3.2e-6" iyz="0" izz="5.8e-6"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.0065" radius="0.0647"/>  <!-- 5.1 inch (129.3mm) diameter, 6.5mm thick -->
+      </geometry>
+      <material name="prop_gemfan">
+        <color rgba="0.8 0.8 0.2 0.9"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Back Right Propeller -->
+  <link name="prop_br">
+    <inertial>
+      <origin xyz="0 0 0"/>
+      <mass value="0.004"/>  <!-- 4.15g Gemfan Hurricane 51477 -->
+      <inertia ixx="3.2e-6" ixy="0" ixz="0" iyy="3.2e-6" iyz="0" izz="5.8e-6"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.0065" radius="0.0647"/>  <!-- 5.1 inch (129.3mm) diameter, 6.5mm thick -->
+      </geometry>
+      <material name="prop_gemfan">
+        <color rgba="0.8 0.8 0.2 0.9"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Back Left Propeller -->
+  <link name="prop_bl">
+    <inertial>
+      <origin xyz="0 0 0"/>
+      <mass value="0.004"/>  <!-- 4.15g Gemfan Hurricane 51477 -->
+      <inertia ixx="3.2e-6" ixy="0" ixz="0" iyy="3.2e-6" iyz="0" izz="5.8e-6"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.0065" radius="0.0647"/>  <!-- 5.1 inch (129.3mm) diameter, 6.5mm thick -->
+      </geometry>
+      <material name="prop_gemfan">
+        <color rgba="0.8 0.8 0.2 0.9"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Landing Legs -->
+  <link name="landing_leg_fr">
+    <inertial>
+      <origin xyz="0 0 -0.015"/>
+      <mass value="0.002"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="5e-7"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 -0.015"/>
+      <geometry>
+        <cylinder length="0.030" radius="0.003"/>
+      </geometry>
+      <material name="carbon_fiber">
+        <color rgba="0.1 0.1 0.1 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <link name="landing_leg_fl">
+    <inertial>
+      <origin xyz="0 0 -0.015"/>
+      <mass value="0.002"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="5e-7"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 -0.015"/>
+      <geometry>
+        <cylinder length="0.030" radius="0.003"/>
+      </geometry>
+      <material name="carbon_fiber">
+        <color rgba="0.1 0.1 0.1 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <link name="landing_leg_br">
+    <inertial>
+      <origin xyz="0 0 -0.015"/>
+      <mass value="0.002"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="5e-7"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 -0.015"/>
+      <geometry>
+        <cylinder length="0.030" radius="0.003"/>
+      </geometry>
+      <material name="carbon_fiber">
+        <color rgba="0.1 0.1 0.1 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <link name="landing_leg_bl">
+    <inertial>
+      <origin xyz="0 0 -0.015"/>
+      <mass value="0.002"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="5e-7"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 -0.015"/>
+      <geometry>
+        <cylinder length="0.030" radius="0.003"/>
+      </geometry>
+      <material name="carbon_fiber">
+        <color rgba="0.1 0.1 0.1 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- 4S LiPo Battery -->
+  <link name="battery">
+    <inertial>
+      <origin xyz="0 0 0"/>
+      <mass value="0.120"/>  <!-- ~120g 4S LiPo battery -->
+      <inertia ixx="6.5e-5" ixy="0" ixz="0" iyy="2.2e-4" iyz="0" izz="2.2e-4"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry>
+        <box size="0.095 0.035 0.025"/>  <!-- Typical 4S LiPo dimensions -->
+      </geometry>
+      <material name="battery_blue">
+        <color rgba="0.1 0.1 0.8 1"/>
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0"/>
+      <geometry>
+        <box size="0.095 0.035 0.025"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- 4S LiPo Battery -->
+  <joint name="base_to_battery" type="fixed">
+    <parent link="base_link"/>
+    <child link="battery"/>
+    <origin xyz="0 0 -0.035"/>  <!-- Battery mounted below main frame -->
+  </joint>
+
+  <!-- FPV Camera -->
+  <link name="fpv_camera">
+    <inertial>
+      <origin xyz="0 0 0"/>
+      <mass value="0.008"/>  <!-- ~8g FPV camera -->
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"/>
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0"/>
+      <geometry>
+        <box size="0.020 0.020 0.015"/>  <!-- Small FPV camera -->
+      </geometry>
+      <material name="camera_black">
+        <color rgba="0.1 0.1 0.1 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- JOINTS -->
+  <!-- Upper and Lower Plates -->
+  <joint name="base_to_upper_plate" type="fixed">
+    <parent link="base_link"/>
+    <child link="upper_plate"/>
+    <origin xyz="0 0 0.025"/>
+  </joint>
+
+  <joint name="base_to_lower_plate" type="fixed">
+    <parent link="base_link"/>
+    <child link="lower_plate"/>
+    <origin xyz="0 0 -0.025"/>
+  </joint>
+
+  <!-- Arms (280mm wheelbase = 140mm from center) -->
+  <joint name="base_to_arm_fr" type="fixed">
+    <parent link="base_link"/>
+    <child link="arm_fr"/>
+    <origin xyz="0.099 -0.099 0"/>  <!-- 45° position, 140mm from center -->
+  </joint>
+
+  <joint name="base_to_arm_fl" type="fixed">
+    <parent link="base_link"/>
+    <child link="arm_fl"/>
+    <origin xyz="0.099 0.099 0"/>
+  </joint>
+
+  <joint name="base_to_arm_br" type="fixed">
+    <parent link="base_link"/>
+    <child link="arm_br"/>
+    <origin xyz="-0.099 -0.099 0"/>
+  </joint>
+
+  <joint name="base_to_arm_bl" type="fixed">
+    <parent link="base_link"/>
+    <child link="arm_bl"/>
+    <origin xyz="-0.099 0.099 0"/>
+  </joint>
+
+  <!-- Motors -->
+  <joint name="arm_fr_to_motor_fr" type="fixed">
+    <parent link="arm_fr"/>
+    <child link="motor_fr"/>
+    <origin xyz="0.070 0 0.020"/>  <!-- At end of arm -->
+  </joint>
+
+  <joint name="arm_fl_to_motor_fl" type="fixed">
+    <parent link="arm_fl"/>
+    <child link="motor_fl"/>
+    <origin xyz="0.070 0 0.020"/>
+  </joint>
+
+  <joint name="arm_br_to_motor_br" type="fixed">
+    <parent link="arm_br"/>
+    <child link="motor_br"/>
+    <origin xyz="0.070 0 0.020"/>
+  </joint>
+
+  <joint name="arm_bl_to_motor_bl" type="fixed">
+    <parent link="arm_bl"/>
+    <child link="motor_bl"/>
+    <origin xyz="0.070 0 0.020"/>
+  </joint>
+
+  <!-- Propellers -->
+  <joint name="motor_fr_to_prop_fr" type="continuous">
+    <parent link="motor_fr"/>
+    <child link="prop_fr"/>
+    <origin xyz="0 0 0.016"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="motor_fl_to_prop_fl" type="continuous">
+    <parent link="motor_fl"/>
+    <child link="prop_fl"/>
+    <origin xyz="0 0 0.016"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="motor_br_to_prop_br" type="continuous">
+    <parent link="motor_br"/>
+    <child link="prop_br"/>
+    <origin xyz="0 0 0.016"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="motor_bl_to_prop_bl" type="continuous">
+    <parent link="motor_bl"/>
+    <child link="prop_bl"/>
+    <origin xyz="0 0 0.016"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <!-- Landing Legs -->
+  <joint name="arm_fr_to_leg_fr" type="fixed">
+    <parent link="arm_fr"/>
+    <child link="landing_leg_fr"/>
+    <origin xyz="0.035 0 -0.025"/>
+  </joint>
+
+  <joint name="arm_fl_to_leg_fl" type="fixed">
+    <parent link="arm_fl"/>
+    <child link="landing_leg_fl"/>
+    <origin xyz="0.035 0 -0.025"/>
+  </joint>
+
+  <joint name="arm_br_to_leg_br" type="fixed">
+    <parent link="arm_br"/>
+    <child link="landing_leg_br"/>
+    <origin xyz="0.035 0 -0.025"/>
+  </joint>
+
+  <joint name="arm_bl_to_leg_bl" type="fixed">
+    <parent link="arm_bl"/>
+    <child link="landing_leg_bl"/>
+    <origin xyz="0.035 0 -0.025"/>
+  </joint>
+
+  <!-- FPV Camera -->
+  <joint name="base_to_fpv_camera" type="fixed">
+    <parent link="base_link"/>
+    <child link="fpv_camera"/>
+    <origin xyz="0.090 0 0.015" rpy="0 0.2 0"/>  <!-- Slightly angled forward -->
+  </joint>
+
+</robot>

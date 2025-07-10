@@ -1,0 +1,12 @@
+{
+  "package_name": "drone_c",
+  "non_idl_tuples": [
+    "/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/src/drone_c:msg/Pid.msg",
+    "/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/src/drone_c:msg/EulerAngles.msg",
+    "/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/src/drone_c:msg/Motors.msg",
+    "/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/src/drone_c:msg/ImuFilter.msg",
+    "/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/src/drone_c:msg/PidConsts.msg",
+    "/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/src/drone_c:msg/DroneHeader.msg",
+    "/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/src/drone_c:msg/Filter.msg"
+  ]
+}

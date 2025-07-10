@@ -1,0 +1,30 @@
+[0.597s] Invoking command in '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/build/drone_tuner': CMAKE_PREFIX_PATH=/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c:/opt/anaconda3/envs/ros2 CONDA_PROMPT_MODIFIER=(ros2) DYLD_LIBRARY_PATH=/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib PYTHONPATH=/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_tuner/lib/python3.10/site-packages:/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages:/opt/anaconda3/envs/ros2/lib/python310/site-packages:/opt/anaconda3/envs/ros2/lib/python3.10/site-packages SHLVL=2 _=/opt/anaconda3/envs/ros2/bin/env __CF_USER_TEXT_ENCODING=0x1F5:0x0:0x0 /opt/anaconda3/envs/ros2/bin/python3.10 setup.py develop --prefix /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_tuner --editable --build-directory /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/build/drone_tuner/build --no-deps install_data --install-dir /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_tuner
+[0.804s] /opt/anaconda3/envs/ros2/lib/python3.10/site-packages/setuptools_scm/_integration/setuptools.py:31: RuntimeWarning: 
+[0.804s] ERROR: setuptools==57.5.0 is used in combination with setuptools-scm>=8.x
+[0.804s] 
+[0.804s] Your build configuration is incomplete and previously worked by accident!
+[0.805s] setuptools-scm requires setuptools>=61
+[0.805s] 
+[0.805s] Suggested workaround if applicable:
+[0.805s]  - migrating from the deprecated setup_requires mechanism to pep517/518
+[0.805s]    and using a pyproject.toml to declare build dependencies
+[0.805s]    which are reliably pre-installed before running the build tools
+[0.805s] 
+[0.805s]   warnings.warn(
+[0.832s] running develop
+[1.081s] running egg_info
+[1.081s] creating drone_tuner.egg-info
+[1.082s] writing manifest file 'drone_tuner.egg-info/SOURCES.txt'
+[1.126s] [07/10/25 15:03:50] ERROR    listing git files failed - pretending there aren't any                         git.py:26
+[1.129s] writing manifest file 'drone_tuner.egg-info/SOURCES.txt'
+[1.130s] running build_ext
+[1.131s] running install_data
+[1.131s] creating /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_tuner/share/ament_index
+[1.132s] creating /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_tuner/share/ament_index/resource_index
+[1.132s] creating /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_tuner/share/ament_index/resource_index/packages
+[1.132s] copying resource/drone_tuner -> /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_tuner/share/ament_index/resource_index/packages
+[1.132s] copying package.xml -> /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_tuner/share/drone_tuner
+[1.132s] creating /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_tuner/share/drone_tuner/config
+[1.132s] copying config/drone_mac.yaml -> /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_tuner/share/drone_tuner/config
+[1.133s] copying config/drone_config.yaml -> /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_tuner/share/drone_tuner/config
+[1.160s] Invoked command in '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/build/drone_tuner' returned '0': CMAKE_PREFIX_PATH=/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c:/opt/anaconda3/envs/ros2 CONDA_PROMPT_MODIFIER=(ros2) DYLD_LIBRARY_PATH=/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib PYTHONPATH=/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_tuner/lib/python3.10/site-packages:/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages:/opt/anaconda3/envs/ros2/lib/python310/site-packages:/opt/anaconda3/envs/ros2/lib/python3.10/site-packages SHLVL=2 _=/opt/anaconda3/envs/ros2/bin/env __CF_USER_TEXT_ENCODING=0x1F5:0x0:0x0 /opt/anaconda3/envs/ros2/bin/python3.10 setup.py develop --prefix /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_tuner --editable --build-directory /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/build/drone_tuner/build --no-deps install_data --install-dir /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_tuner

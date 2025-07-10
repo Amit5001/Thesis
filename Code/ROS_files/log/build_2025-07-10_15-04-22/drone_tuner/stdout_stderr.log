@@ -1,0 +1,45 @@
+/opt/anaconda3/envs/ros2/lib/python3.10/site-packages/setuptools_scm/_integration/setuptools.py:31: RuntimeWarning: 
+ERROR: setuptools==57.5.0 is used in combination with setuptools-scm>=8.x
+
+Your build configuration is incomplete and previously worked by accident!
+setuptools-scm requires setuptools>=61
+
+Suggested workaround if applicable:
+ - migrating from the deprecated setup_requires mechanism to pep517/518
+   and using a pyproject.toml to declare build dependencies
+   which are reliably pre-installed before running the build tools
+
+  warnings.warn(
+running develop
+/opt/anaconda3/envs/ros2/lib/python3.10/site-packages/setuptools_scm/_integration/setuptools.py:31: RuntimeWarning: 
+ERROR: setuptools==57.5.0 is used in combination with setuptools-scm>=8.x
+
+Your build configuration is incomplete and previously worked by accident!
+setuptools-scm requires setuptools>=61
+
+Suggested workaround if applicable:
+ - migrating from the deprecated setup_requires mechanism to pep517/518
+   and using a pyproject.toml to declare build dependencies
+   which are reliably pre-installed before running the build tools
+
+  warnings.warn(
+running egg_info
+[07/10/25 15:04:27] ERROR    listing git files failed - pretending there aren't any                         git.py:26
+writing manifest file '../../build/drone_tuner/drone_tuner.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/build/drone_tuner/build
+creating /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/build/drone_tuner/build/lib
+creating /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/build/drone_tuner/build/lib/drone_tuner
+copying drone_tuner/__init__.py -> /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/build/drone_tuner/build/lib/drone_tuner
+copying drone_tuner/drone_tuner.py -> /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/build/drone_tuner/build/lib/drone_tuner
+running install
+running install_lib
+creating /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_tuner/lib/python3.10/site-packages/drone_tuner
+byte-compiling /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_tuner/lib/python3.10/site-packages/drone_tuner/__init__.py to __init__.cpython-310.pyc
+byte-compiling /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_tuner/lib/python3.10/site-packages/drone_tuner/drone_tuner.py to drone_tuner.cpython-310.pyc
+running install_data
+running install_egg_info
+Copying ../../build/drone_tuner/drone_tuner.egg-info to /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_tuner/lib/python3.10/site-packages/drone_tuner-0.0.0-py3.10.egg-info
+running install_scripts
+writing list of installed files to '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/build/drone_tuner/install.log'

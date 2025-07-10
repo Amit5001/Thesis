@@ -1,0 +1,269 @@
+[0.027s] Invoking command in '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/build/drone_c': CONDA_PROMPT_MODIFIER=(ros2) SHLVL=2 _=/opt/anaconda3/envs/ros2/bin/env __CF_USER_TEXT_ENCODING=0x1F5:0x0:0x0 /opt/anaconda3/envs/ros2/bin/cmake /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/src/drone_c -DCMAKE_INSTALL_PREFIX=/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c
+[0.062s] -- Found ament_cmake: 1.3.3 (/opt/anaconda3/envs/ros2/share/ament_cmake/cmake)
+[0.086s] -- Found Python3: /opt/anaconda3/envs/ros2/bin/python (found version "3.10.6") found components: Interpreter 
+[0.140s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.158s] -- Found rclcpp: 16.0.3 (/opt/anaconda3/envs/ros2/share/rclcpp/cmake)
+[0.197s] -- Found rosidl_generator_c: 3.1.4 (/opt/anaconda3/envs/ros2/share/rosidl_generator_c/cmake)
+[0.202s] -- Found rosidl_adapter: 3.1.4 (/opt/anaconda3/envs/ros2/share/rosidl_adapter/cmake)
+[0.210s] -- Found rosidl_generator_cpp: 3.1.4 (/opt/anaconda3/envs/ros2/share/rosidl_generator_cpp/cmake)
+[0.222s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.238s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.338s] -- Found rmw_implementation_cmake: 6.1.1 (/opt/anaconda3/envs/ros2/share/rmw_implementation_cmake/cmake)
+[0.340s] -- Found rmw_cyclonedds_cpp: 1.3.4 (/opt/anaconda3/envs/ros2/share/rmw_cyclonedds_cpp/cmake)
+[0.369s] -- Using RMW implementation 'rmw_cyclonedds_cpp' as default
+[0.446s] -- Found std_msgs: 4.2.3 (/opt/anaconda3/envs/ros2/share/std_msgs/cmake)
+[0.467s] -- Found rosidl_default_generators: 1.2.0 (/opt/anaconda3/envs/ros2/share/rosidl_default_generators/cmake)
+[0.475s] -- Found sensor_msgs: 4.2.3 (/opt/anaconda3/envs/ros2/share/sensor_msgs/cmake)
+[0.737s] -- Found ament_cmake_ros: 0.10.0 (/opt/anaconda3/envs/ros2/share/ament_cmake_ros/cmake)
+[0.985s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.077s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.096s] -- Found python_cmake_module: 0.10.0 (/opt/anaconda3/envs/ros2/share/python_cmake_module/cmake)
+[1.112s] -- Using PythonExtra_INCLUDE_DIRS: /opt/anaconda3/envs/ros2/include/python3.10;/opt/anaconda3/envs/ros2/include/python3.10
+[1.112s] -- Using PythonExtra_LIBRARIES: /opt/anaconda3/envs/ros2/lib/libpython3.10.dylib
+[1.260s] -- Found Python3: /opt/anaconda3/envs/ros2/include/python3.10 (found version "3.10.6") found components: Development NumPy Interpreter Development.Module Development.Embed 
+[1.301s] -- Found ament_lint_auto: 0.12.5 (/opt/anaconda3/envs/ros2/share/ament_lint_auto/cmake)
+[1.317s] -- Added test 'copyright' to check source files copyright and LICENSE
+[1.319s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.321s] -- Added test 'lint_cmake' to check CMake code style
+[1.322s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[1.328s] -- Added test 'uncrustify' to check C / C++ code style
+[1.328s] -- Configured uncrustify additional arguments: 
+[1.329s] -- Added test 'xmllint' to check XML markup files
+[1.332s] -- Configuring done
+[1.446s] -- Generating done
+[1.456s] -- Build files have been written to: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/build/drone_c
+[1.460s] Invoked command in '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/build/drone_c' returned '0': CONDA_PROMPT_MODIFIER=(ros2) SHLVL=2 _=/opt/anaconda3/envs/ros2/bin/env __CF_USER_TEXT_ENCODING=0x1F5:0x0:0x0 /opt/anaconda3/envs/ros2/bin/cmake /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/src/drone_c -DCMAKE_INSTALL_PREFIX=/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c
+[1.463s] Invoking command in '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/build/drone_c': CONDA_PROMPT_MODIFIER=(ros2) SHLVL=2 _=/opt/anaconda3/envs/ros2/bin/env __CF_USER_TEXT_ENCODING=0x1F5:0x0:0x0 /opt/anaconda3/envs/ros2/bin/cmake --build /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/build/drone_c -- -j10 -l10
+[1.542s] [  1%] Built target drone_c__cpp
+[1.550s] [ 12%] Built target drone_c__rosidl_generator_c
+[1.551s] [ 12%] Built target ament_cmake_python_symlink_drone_c
+[1.612s] [ 24%] Built target drone_c__rosidl_typesupport_c
+[1.619s] [ 35%] Built target drone_c__rosidl_typesupport_introspection_c
+[1.634s] [ 46%] Built target drone_c__rosidl_typesupport_introspection_cpp
+[1.635s] [ 58%] Built target drone_c__rosidl_typesupport_cpp
+[1.636s] [ 69%] Built target drone_c__rosidl_typesupport_fastrtps_cpp
+[1.641s] [ 81%] Built target drone_c__rosidl_typesupport_fastrtps_c
+[1.673s] [ 81%] Built target drone_c
+[1.707s] [ 82%] Built target drone_c__py
+[1.756s] [ 92%] Built target drone_c__rosidl_generator_py
+[1.802s] [ 94%] Built target drone_c__rosidl_typesupport_fastrtps_c__pyext
+[1.803s] [ 97%] Built target drone_c__rosidl_typesupport_c__pyext
+[1.803s] [100%] Built target drone_c__rosidl_typesupport_introspection_c__pyext
+[1.811s] /opt/anaconda3/envs/ros2/lib/python3.10/site-packages/setuptools_scm/_integration/setuptools.py:31: RuntimeWarning: 
+[1.811s] ERROR: setuptools==57.5.0 is used in combination with setuptools-scm>=8.x
+[1.811s] 
+[1.811s] Your build configuration is incomplete and previously worked by accident!
+[1.811s] setuptools-scm requires setuptools>=61
+[1.811s] 
+[1.811s] Suggested workaround if applicable:
+[1.811s]  - migrating from the deprecated setup_requires mechanism to pep517/518
+[1.811s]    and using a pyproject.toml to declare build dependencies
+[1.811s]    which are reliably pre-installed before running the build tools
+[1.811s] 
+[1.812s]   warnings.warn(
+[1.822s] running egg_info
+[1.876s] [07/10/25 15:04:24] ERROR    listing git files failed - pretending     git.py:26
+[1.876s]                              there aren't any                                   
+[1.879s] writing manifest file 'drone_c.egg-info/SOURCES.txt'
+[1.908s] [100%] Built target ament_cmake_python_build_drone_c_egg
+[1.924s] Invoked command in '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/build/drone_c' returned '0': CONDA_PROMPT_MODIFIER=(ros2) SHLVL=2 _=/opt/anaconda3/envs/ros2/bin/env __CF_USER_TEXT_ENCODING=0x1F5:0x0:0x0 /opt/anaconda3/envs/ros2/bin/cmake --build /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/build/drone_c -- -j10 -l10
+[2.495s] Invoking command in '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/build/drone_c': CONDA_PROMPT_MODIFIER=(ros2) SHLVL=2 _=/opt/anaconda3/envs/ros2/bin/env __CF_USER_TEXT_ENCODING=0x1F5:0x0:0x0 /opt/anaconda3/envs/ros2/bin/cmake --install /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/build/drone_c
+[2.504s] -- Install configuration: ""
+[2.505s] -- Execute custom install script
+[2.505s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/ament_index/resource_index/rosidl_interfaces/drone_c
+[2.506s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/drone_header__functions.h
+[2.506s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/drone_header__struct.h
+[2.506s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/drone_header__type_support.h
+[2.506s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/euler_angles__functions.h
+[2.506s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/euler_angles__struct.h
+[2.507s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/euler_angles__type_support.h
+[2.507s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/filter__functions.h
+[2.507s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/filter__struct.h
+[2.507s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/filter__type_support.h
+[2.507s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/imu_filter__functions.h
+[2.507s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/imu_filter__struct.h
+[2.507s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/imu_filter__type_support.h
+[2.508s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/motors__functions.h
+[2.508s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/motors__struct.h
+[2.508s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/motors__type_support.h
+[2.508s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/pid__functions.h
+[2.508s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/pid__struct.h
+[2.509s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/pid__type_support.h
+[2.509s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/pid_consts__functions.h
+[2.509s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/pid_consts__struct.h
+[2.509s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/pid_consts__type_support.h
+[2.509s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/drone_header.h
+[2.509s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/euler_angles.h
+[2.509s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/filter.h
+[2.510s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/imu_filter.h
+[2.510s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/motors.h
+[2.510s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/pid.h
+[2.510s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/pid_consts.h
+[2.510s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/rosidl_generator_c__visibility_control.h
+[2.511s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/drone_header__rosidl_typesupport_fastrtps_c.h
+[2.511s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/euler_angles__rosidl_typesupport_fastrtps_c.h
+[2.511s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/filter__rosidl_typesupport_fastrtps_c.h
+[2.511s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/imu_filter__rosidl_typesupport_fastrtps_c.h
+[2.511s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/motors__rosidl_typesupport_fastrtps_c.h
+[2.511s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/pid__rosidl_typesupport_fastrtps_c.h
+[2.512s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/pid_consts__rosidl_typesupport_fastrtps_c.h
+[2.512s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[2.512s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/drone_header__builder.hpp
+[2.512s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/drone_header__struct.hpp
+[2.512s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/drone_header__traits.hpp
+[2.513s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/euler_angles__builder.hpp
+[2.513s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/euler_angles__struct.hpp
+[2.513s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/euler_angles__traits.hpp
+[2.513s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/filter__builder.hpp
+[2.513s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/filter__struct.hpp
+[2.513s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/filter__traits.hpp
+[2.513s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/imu_filter__builder.hpp
+[2.514s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/imu_filter__struct.hpp
+[2.514s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/imu_filter__traits.hpp
+[2.514s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/motors__builder.hpp
+[2.514s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/motors__struct.hpp
+[2.514s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/motors__traits.hpp
+[2.514s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/pid__builder.hpp
+[2.515s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/pid__struct.hpp
+[2.515s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/pid__traits.hpp
+[2.515s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/pid_consts__builder.hpp
+[2.515s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/pid_consts__struct.hpp
+[2.515s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/pid_consts__traits.hpp
+[2.515s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/drone_header.hpp
+[2.515s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/euler_angles.hpp
+[2.516s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/filter.hpp
+[2.516s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/imu_filter.hpp
+[2.516s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/motors.hpp
+[2.516s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/pid.hpp
+[2.516s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/pid_consts.hpp
+[2.517s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/drone_header__rosidl_typesupport_fastrtps_cpp.hpp
+[2.517s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/euler_angles__rosidl_typesupport_fastrtps_cpp.hpp
+[2.517s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/filter__rosidl_typesupport_fastrtps_cpp.hpp
+[2.517s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/imu_filter__rosidl_typesupport_fastrtps_cpp.hpp
+[2.517s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/motors__rosidl_typesupport_fastrtps_cpp.hpp
+[2.518s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/pid__rosidl_typesupport_fastrtps_cpp.hpp
+[2.518s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/pid_consts__rosidl_typesupport_fastrtps_cpp.hpp
+[2.518s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[2.519s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/drone_header__rosidl_typesupport_introspection_c.h
+[2.519s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/euler_angles__rosidl_typesupport_introspection_c.h
+[2.519s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/filter__rosidl_typesupport_introspection_c.h
+[2.519s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/imu_filter__rosidl_typesupport_introspection_c.h
+[2.519s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/motors__rosidl_typesupport_introspection_c.h
+[2.519s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/pid__rosidl_typesupport_introspection_c.h
+[2.519s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/pid_consts__rosidl_typesupport_introspection_c.h
+[2.520s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[2.520s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/drone_header__rosidl_typesupport_introspection_cpp.hpp
+[2.520s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/euler_angles__rosidl_typesupport_introspection_cpp.hpp
+[2.520s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/filter__rosidl_typesupport_introspection_cpp.hpp
+[2.520s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/imu_filter__rosidl_typesupport_introspection_cpp.hpp
+[2.521s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/motors__rosidl_typesupport_introspection_cpp.hpp
+[2.521s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/pid__rosidl_typesupport_introspection_cpp.hpp
+[2.521s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/include/drone_c/drone_c/msg/detail/pid_consts__rosidl_typesupport_introspection_cpp.hpp
+[2.521s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/environment/pythonpath.sh
+[2.521s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/environment/pythonpath.dsv
+[2.522s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages/drone_c-0.0.1-py3.10.egg-info/PKG-INFO
+[2.522s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages/drone_c-0.0.1-py3.10.egg-info/SOURCES.txt
+[2.522s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages/drone_c-0.0.1-py3.10.egg-info/dependency_links.txt
+[2.522s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages/drone_c-0.0.1-py3.10.egg-info/top_level.txt
+[2.523s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages/drone_c/__init__.py
+[2.523s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages/drone_c/_drone_c_s.ep.rosidl_typesupport_c.c
+[2.523s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages/drone_c/_drone_c_s.ep.rosidl_typesupport_fastrtps_c.c
+[2.523s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages/drone_c/_drone_c_s.ep.rosidl_typesupport_introspection_c.c
+[2.523s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages/drone_c/drone_c_s__rosidl_typesupport_c.cpython-310-darwin.so
+[2.523s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages/drone_c/drone_c_s__rosidl_typesupport_fastrtps_c.cpython-310-darwin.so
+[2.524s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages/drone_c/drone_c_s__rosidl_typesupport_introspection_c.cpython-310-darwin.so
+[2.524s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages/drone_c/libdrone_c__rosidl_generator_py.dylib
+[2.524s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages/drone_c/msg/__init__.py
+[2.524s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages/drone_c/msg/_drone_header.py
+[2.524s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages/drone_c/msg/_drone_header_s.c
+[2.524s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages/drone_c/msg/_euler_angles.py
+[2.525s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages/drone_c/msg/_euler_angles_s.c
+[2.525s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages/drone_c/msg/_filter.py
+[2.525s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages/drone_c/msg/_filter_s.c
+[2.525s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages/drone_c/msg/_imu_filter.py
+[2.525s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages/drone_c/msg/_imu_filter_s.c
+[2.525s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages/drone_c/msg/_motors.py
+[2.525s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages/drone_c/msg/_motors_s.c
+[2.526s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages/drone_c/msg/_pid.py
+[2.526s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages/drone_c/msg/_pid_consts.py
+[2.526s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages/drone_c/msg/_pid_consts_s.c
+[2.526s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages/drone_c/msg/_pid_s.c
+[2.526s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages/drone_c/drone_c_s__rosidl_typesupport_fastrtps_c.cpython-310-darwin.so
+[2.527s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages/drone_c/drone_c_s__rosidl_typesupport_introspection_c.cpython-310-darwin.so
+[2.527s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/python3.10/site-packages/drone_c/drone_c_s__rosidl_typesupport_c.cpython-310-darwin.so
+[2.527s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/msg/Pid.idl
+[2.527s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/msg/EulerAngles.idl
+[2.527s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/msg/Motors.idl
+[2.528s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/msg/ImuFilter.idl
+[2.528s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/msg/PidConsts.idl
+[2.528s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/msg/DroneHeader.idl
+[2.528s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/msg/Filter.idl
+[2.528s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/msg/Pid.msg
+[2.528s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/msg/EulerAngles.msg
+[2.529s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/msg/Motors.msg
+[2.529s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/msg/ImuFilter.msg
+[2.529s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/msg/PidConsts.msg
+[2.529s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/msg/DroneHeader.msg
+[2.529s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/msg/Filter.msg
+[2.530s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/drone_c/rtcom/__init__.py
+[2.530s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/drone_c/rtcom/core.py
+[2.530s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/drone_c/rtcom/rtcom_client.py
+[2.530s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/drone_c/rtcom/rtcom_server.py
+[2.530s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/drone_c/rtcom/utils.py
+[2.531s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/drone_c/rtcom_teensy_ros.py
+[2.531s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/launch/drone_launch.launch.py
+[2.531s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/plotjuggler/plotjugller_save.xml
+[2.531s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/ament_index/resource_index/package_run_dependencies/drone_c
+[2.532s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/ament_index/resource_index/parent_prefix_path/drone_c
+[2.532s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/environment/ament_prefix_path.sh
+[2.532s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/environment/ament_prefix_path.dsv
+[2.532s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/environment/path.sh
+[2.532s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/environment/path.dsv
+[2.532s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/local_setup.bash
+[2.533s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/local_setup.sh
+[2.533s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/local_setup.zsh
+[2.533s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/local_setup.dsv
+[2.533s] -- Symlinking: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/package.dsv
+[2.545s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/ament_index/resource_index/packages/drone_c
+[2.545s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/cmake/rosidl_cmake-extras.cmake
+[2.545s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/cmake/ament_cmake_export_dependencies-extras.cmake
+[2.546s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/cmake/ament_cmake_export_include_directories-extras.cmake
+[2.546s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/cmake/ament_cmake_export_libraries-extras.cmake
+[2.546s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/cmake/ament_cmake_export_targets-extras.cmake
+[2.546s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[2.547s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[2.547s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/cmake/drone_cConfig.cmake
+[2.547s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/cmake/drone_cConfig-version.cmake
+[2.547s] -- Up-to-date symlink: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/package.xml
+[2.548s] -- Up-to-date: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/libdrone_c__rosidl_generator_c.dylib
+[2.548s] -- Installing: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/libdrone_c__rosidl_typesupport_fastrtps_c.dylib
+[2.552s] [cctools-port]: generating fake signature for '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/libdrone_c__rosidl_typesupport_fastrtps_c.dylib'
+[2.563s] -- Up-to-date: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/libdrone_c__rosidl_typesupport_fastrtps_cpp.dylib
+[2.563s] -- Installing: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/libdrone_c__rosidl_typesupport_introspection_c.dylib
+[2.566s] [cctools-port]: generating fake signature for '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/libdrone_c__rosidl_typesupport_introspection_c.dylib'
+[2.575s] -- Installing: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/libdrone_c__rosidl_typesupport_c.dylib
+[2.577s] [cctools-port]: generating fake signature for '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/libdrone_c__rosidl_typesupport_c.dylib'
+[2.586s] -- Up-to-date: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/libdrone_c__rosidl_typesupport_introspection_cpp.dylib
+[2.586s] -- Up-to-date: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/libdrone_c__rosidl_typesupport_cpp.dylib
+[2.608s] Listing 'lib/python3.10/site-packages/drone_c'...
+[2.608s] Can't list 'lib/python3.10/site-packages/drone_c'
+[2.610s] -- Installing: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/libdrone_c__rosidl_generator_py.dylib
+[2.613s] [cctools-port]: generating fake signature for '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/lib/libdrone_c__rosidl_generator_py.dylib'
+[2.623s] -- Up-to-date: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/cmake/export_drone_c__rosidl_generator_cExport.cmake
+[2.623s] -- Up-to-date: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/cmake/export_drone_c__rosidl_generator_cExport-noconfig.cmake
+[2.624s] -- Up-to-date: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/cmake/export_drone_c__rosidl_typesupport_fastrtps_cExport.cmake
+[2.624s] -- Up-to-date: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/cmake/export_drone_c__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[2.624s] -- Up-to-date: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/cmake/export_drone_c__rosidl_generator_cppExport.cmake
+[2.624s] -- Up-to-date: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/cmake/export_drone_c__rosidl_typesupport_fastrtps_cppExport.cmake
+[2.624s] -- Up-to-date: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/cmake/export_drone_c__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[2.625s] -- Up-to-date: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/cmake/drone_c__rosidl_typesupport_introspection_cExport.cmake
+[2.625s] -- Up-to-date: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/cmake/drone_c__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[2.625s] -- Up-to-date: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/cmake/drone_c__rosidl_typesupport_cExport.cmake
+[2.625s] -- Up-to-date: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/cmake/drone_c__rosidl_typesupport_cExport-noconfig.cmake
+[2.625s] -- Up-to-date: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/cmake/drone_c__rosidl_typesupport_introspection_cppExport.cmake
+[2.625s] -- Up-to-date: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/cmake/drone_c__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[2.625s] -- Up-to-date: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/cmake/drone_c__rosidl_typesupport_cppExport.cmake
+[2.626s] -- Up-to-date: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/cmake/drone_c__rosidl_typesupport_cppExport-noconfig.cmake
+[2.626s] -- Up-to-date: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/cmake/export_drone_c__rosidl_generator_pyExport.cmake
+[2.626s] -- Up-to-date: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/install/drone_c/share/drone_c/cmake/export_drone_c__rosidl_generator_pyExport-noconfig.cmake
+[2.628s] Invoked command in '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/build/drone_c' returned '0': CONDA_PROMPT_MODIFIER=(ros2) SHLVL=2 _=/opt/anaconda3/envs/ros2/bin/env __CF_USER_TEXT_ENCODING=0x1F5:0x0:0x0 /opt/anaconda3/envs/ros2/bin/cmake --install /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/build/drone_c

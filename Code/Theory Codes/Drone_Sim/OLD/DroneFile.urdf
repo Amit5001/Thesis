@@ -1,0 +1,22 @@
+<robot name="simple_drone">
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 0 0" />
+      <mass value="1.0" />
+      <inertia
+            ixx="4.5929e-3" ixy="4.915e-6" ixz="-2.905e-6"
+            iyy="3.30706e-3" iyz="0.176e-6"
+            izz="7.17489e-3" />
+    </inertial>
+    <visual>
+      <geometry>
+        <box size="0.2 0.2 0.05" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.2 0.2 0.05" />
+      </geometry>
+    </collision>
+  </link>
+</robot>

@@ -1,0 +1,84 @@
+1. NeuralNetwork.py
+    Purpose: Core neural network framework with activations, layers, optimizers
+    Implementation:
+
+    ActivationFunctions: ReLU, tanh, softmax, linear + derivatives
+    Layer: Forward/backward pass, weight/bias management
+    NeuralNetwork: Multi-layer network with backpropagation
+    SGDOptimizer/AdamOptimizer: Parameter update algorithms
+
+    Key Functions:
+
+        forward(): Input → weights×input + bias → activation
+        backward(): Gradient computation via chain rule
+        update(): Parameter updates using gradients
+
+2. Environment.py
+    Purpose: RL environment interface and implementations
+    Implementation:
+
+    Environment: Base class interface
+    CartPole: Classic control problem (balance pole)
+    LinearSystem: Linear dynamics x_{k+1} = Ax_k + Bu_k + noise
+
+    Key Functions:
+
+        reset(): Initialize episode
+        step(action): State transition, return (state, reward, done, info)
+        discrete_to_continuous(): Map discrete actions to continuous values
+
+3. PolicyNetwork.py
+    Purpose: Neural network for action probability outputs
+    Implementation:
+
+    Discrete policy: state → action probabilities (softmax)
+    Gradient computation for policy optimization
+    Action sampling from probability distribution
+
+    Key Functions:
+
+        sample_action(): Sample action from policy distribution
+        compute_policy_gradient(): ∇(-log π(a|s) × A)
+        _softmax_gradient(): Convert softmax gradients to logit gradients
+
+4. ValueNN.py
+    Purpose: Neural network for state value estimation V(s)
+    Implementation:
+
+    State → scalar value prediction
+    MSE loss for training against target returns
+    Advantage computation
+
+    Key Functions:
+
+        forward(): State → value estimate
+        compute_value_loss(): MSE between predicted and target values
+        compute_advantages(): TD error calculation
+
+5. PolicyGradient.py
+    Purpose: Complete A2C algorithm implementation
+    Implementation:
+
+    Episode generation using current policy
+    Monte Carlo return calculation
+    Policy and value network updates
+
+    Key Functions:
+
+        generate_episode(): Collect full episode trajectory
+        compute_returns(): G_t = Σ γ^k r_{t+k}
+        train_episode(): Full training step (generate → compute → update)
+
+6. Linear System test.py
+    Purpose: Apply A2C to linear control, compare with LQR
+    Implementation:
+
+    LinearControlAgent: Specialized A2C for control systems
+    LQR comparison using control library
+    Policy gain extraction from trained network
+
+    Key Functions:
+
+        extract_policy_gain(): Least squares to find K in u = -Kx
+        train_linear_control(): Complete training + LQR comparison
+        compare_policies(): Performance evaluation
