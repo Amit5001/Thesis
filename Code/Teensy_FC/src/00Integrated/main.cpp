@@ -11,6 +11,7 @@
 #include "Voltmeter.h"
 #include "Var_types.h"
 #include "drone_identify.h"
+#include "Lidar_VL53L1X.h"
 
 /*
 ------------------------------------------ Global Variables ------------------------------------------
@@ -56,6 +57,16 @@ double t_PID_s = 0.0f;
 double t_PID_r = 0.0f;
 float actual_dt = 0.0f;
 
+// LiDAR Configuration
+bool io_2v8 = true;  // Use 2.8V IO
+uint16_t TimingBudget = 33000;  // 33ms
+uint16_t MeasurementPeriod = 33;  // 33ms - new measurement after 33ms, Which is 30Hz (30 measurements per second)
+uint16_t Timeout = 5000;  // 5 seconds
+uint8_t xshut_pin = 26;  // Pin for XSHUT control
+Lidar_VL53L1X lidar(true, VL53L1X::Long, TimingBudget, MeasurementPeriod, Timeout, xshut_pin, Wire2);
+uint16_t lidar_distance = 0;  // Variable to store the distance read from the LiDAR sensor
+
+
 /*
 ------------------------------------------ Prototypes ------------------------------------------
 */
@@ -77,8 +88,16 @@ void setup() {
             Serial.println("Invalid ELRSSerial configuration");
         }
     }
+
+    // Initialize the LiDAR sensor
+    if (!lidar.init_Lidar()) {
+        Serial.println("Failed to initialize LiDAR sensor");
+    } else {
+        Serial.println("LiDAR sensor initialized successfully");
+    }
+
     ELRS.begin(ELRSSerial);
-    getbot_param(drone_tune, drone_data_header);
+    getbot_param(drone_tune, drone_data_header);  // Extracting the parameters for this specific drone.
     setPID_params(&drone_tune.pid_const);
     comp_filter.set_beta(&drone_tune.filter_data);
     imu.Initial_Calibration();

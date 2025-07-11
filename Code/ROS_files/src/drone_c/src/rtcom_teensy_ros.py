@@ -5,7 +5,7 @@ import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Imu, MagneticField
 from std_msgs.msg import Float32MultiArray, Int32MultiArray
-from drone_c.msg import Pid, Motors, EulerAngles, ImuFilter, PidConsts, DroneHeader, Filter
+from drone_c.msg import Pid, Motors, EulerAngles, ImuFilter, PidConsts, DroneHeader, Filter, LidarDistance
 from rtcom import *
 import time
 import math
@@ -65,7 +65,8 @@ class UDPSocketClient(Node):
         self.client.on('l', self.handle_pid_rate)
         self.client.on('m', self.handle_pid_consts)
         self.client.on('n', self.handle_drone_header)
-        self.client.on('o', self.magwick_const_flash_colback)
+        self.client.on('o', self.magwick_const_flash_callback)
+        self.client.on('p', self.lidar_distance_callback)
 
     def handle_magnetometer(self, message: bytes):
         messages_struct_float = struct.unpack("f" * (len(message) // FLOAT_SIZE), message)
@@ -245,7 +246,7 @@ class UDPSocketClient(Node):
         drone_header_msg.current = struct.unpack('f', message[13:17])[0]
         self.drone_header_pub.publish(drone_header_msg)
 
-    def magwick_const_flash_colback(self, message: bytes):
+    def magwick_const_flash_callback(self, message: bytes):
         messages_struct_float = struct.unpack("f" * (len(message) // FLOAT_SIZE), message)
         magwick_const_flash_msg = Filter()
         magwick_const_flash_msg.std_beta = round(messages_struct_float[0], 2)
@@ -259,6 +260,12 @@ class UDPSocketClient(Node):
         except Exception as e:
             self.get_logger().error(f"Failed to send filter constants: {e}")
             return
+
+    def lidar_distance_callback(self, message: bytes):
+        messages_struct_float = struct.unpack("f" * (len(message) // FLOAT_SIZE), message)
+        lidar_distance_msg = LidarDistance()
+        lidar_distance_msg.distance = round(messages_struct_float[0], 3)
+        self.current_lidar_distance.publish(lidar_distance_msg)
 
     def send_filter_consts(self, msg: Filter):
         data = []

@@ -1,47 +1,27 @@
-#include <SPI.h>
-#include "Bitcraze_PMW3901.h"
+#include <Wire.h>
+#include <Lidar_VL53L1X.h>
 
-#define CS_PIN 15  // שנה בהתאם לצורך
-#define HEIGHT_METERS 1.5
-#define PIXELS_PER_METER 1250.0  // בהתאם לניסוי/כיול
-#define READ_INTERVAL_MS 10
 
-Bitcraze_PMW3901 pmw(CS_PIN);
 
-unsigned long lastReadTime = 0;
+// Drone altitude measurement with XSHUT on pin 26
+Lidar_VL53L1X lidar(true, VL53L1X::Long, 50000, 50, 5000, 26, Wire2);
 
 void setup() {
-  Serial.begin(115200);
-  while (!Serial);
-
-  if (!pmw.begin()) {
-    Serial.println("Failed to initialize PMW3901");
-    while (1);
-  }
-  delay(1000);
-  Serial.println("PMW3901 initialized");
+    Serial.begin(115200);
+    
+    if (lidar.init_Lidar()) {
+        Serial.println("Lidar ready for altitude measurement");
+    } else {
+        Serial.println("Lidar initialization failed!");
+    }
 }
 
 void loop() {
-  static int16_t deltaX, deltaY;
-
-  unsigned long now = millis();
-  if (now - lastReadTime >= READ_INTERVAL_MS) {
-    lastReadTime = now;
-
-    pmw.readMotionCount(&deltaX, &deltaY);
-
-    // חישוב מהירות קווית במטרים לשנייה
-    float intervalSec = READ_INTERVAL_MS / 1000.0;
-    float velocityX = (float)deltaX / PIXELS_PER_METER / intervalSec;
-    float velocityY = (float)deltaY / PIXELS_PER_METER / intervalSec;
-
-    Serial.print("Velocity X: ");
-    Serial.print(velocityX, 4);
-    Serial.print(" m/s, Y: ");
-    Serial.print(velocityY, 4);
-    Serial.println(" m/s");
-  }
-  delay(500);
-
+    uint16_t distance = lidar.readDistance();
+    if (distance > 0) {
+        Serial.print("Altitude: ");
+        Serial.print(distance);
+        Serial.println(" mm");
+    }
+    delay(50);
 }

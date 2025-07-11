@@ -61,7 +61,7 @@ void Drone_com::onConnection(RTComSession& session) {
 Drone_com::Drone_com(Measurement_t* meas, quat_t* q_est, attitude_t* desired_attitude, motor_t* motor_pwm,
                      attitude_t* desired_rate, attitude_t* estimated_attitude, attitude_t* estimated_rate,
                      PID_out_t* PID_stab_out, PID_out_t* PID_rate_out, Controller_s* controller_data,
-                     drone_tune_t* drone_tune, Drone_Data_t* drone_data_header, CompFilter* comfilter)
+                     drone_tune_t* drone_tune, Drone_Data_t* drone_data_header, CompFilter* comfilter, uint16_t* lidar_distance)
     : rtcomSocket(SOCKET_ADDRESS, SOCKET_CONFIG)  // Initialize rtcomSocket with both address and config
 {
     _meas = meas;
@@ -77,6 +77,7 @@ Drone_com::Drone_com(Measurement_t* meas, quat_t* q_est, attitude_t* desired_att
     _drone_tune = drone_tune;  // Store the pointer instead of making a copy
     _drone_data_header = drone_data_header;
     _comfilter = comfilter;
+    _lidar_distance = lidar_distance;
 }
 
 void Drone_com::init_com() {
@@ -218,6 +219,10 @@ void Drone_com::convert_Measurment_to_byte() {
     magwick_data[1] = _drone_tune->filter_data.high_beta;
     magwick_data[2] = _drone_tune->filter_data.low_beta;
     memcpy(magwick_data_byte, magwick_data, sizeof(magwick_data_byte));
+
+    lidar_distance_data[0] = *_lidar_distance;
+    memcpy(lidar_distance_byte, lidar_distance_data, sizeof(lidar_distance_byte));
+
 }
 
 void Drone_com::emit_data() {
@@ -236,6 +241,7 @@ void Drone_com::emit_data() {
     socketSession->emitTyped(pid_consts_byte, sizeof(pid_consts_byte), PID_CONSTS_DATA);
     socketSession->emitTyped(drone_header_byte, sizeof(drone_header_byte), DRONE_SIGNATURE);
     socketSession->emitTyped(magwick_data_byte, sizeof(magwick_data_byte), MAGWICK_DATA);
+    socketSession->emitTyped((uint8_t*)lidar_distance_byte, sizeof(lidar_distance_byte), ALTITUDE_DATA);
 }
 
 void Drone_com::send_data() {

@@ -24,6 +24,7 @@
 #define PID_CONSTS_DATA 'm'
 #define DRONE_SIGNATURE 'n'
 #define MAGWICK_DATA 'o'
+#define ALTITUDE_DATA 'p'
 
 #define FILTER_CONSTS_RETURN 'y'
 #define PID_CONSTS_RETURN 'z'
@@ -32,7 +33,9 @@
 
 class Drone_com {
    public:
-    Drone_com(Measurement_t* meas, quat_t* q_est, attitude_t* desired_attitude, motor_t* motor_pwm, attitude_t* desired_rate, attitude_t* estimated_attitude, attitude_t* estimated_rate, PID_out_t* PID_stab_out, PID_out_t* PID_rate_out, Controller_s* controller_data, drone_tune_t* drone_tune, Drone_Data_t* drone_data_header ,CompFilter* comfilter);
+    Drone_com(Measurement_t* meas, quat_t* q_est, attitude_t* desired_attitude, motor_t* motor_pwm, attitude_t* desired_rate,
+              attitude_t* estimated_attitude, attitude_t* estimated_rate, PID_out_t* PID_stab_out, PID_out_t* PID_rate_out, 
+              Controller_s* controller_data, drone_tune_t* drone_tune, Drone_Data_t* drone_data_header ,CompFilter* comfilter, uint16_t* lidar_distance);
     void init_com();
     void convert_Measurment_to_byte();
     void emit_data();
@@ -60,6 +63,8 @@ class Drone_com {
     static drone_tune_t* _drone_tune;
     static Drone_Data_t* _drone_data_header;
     static CompFilter* _comfilter;
+    static uint16_t* _lidar_distance;
+
     
     float* imu_data_raw = (float*)calloc(6, sizeof(float));
     uint8_t imu_byte_raw[sizeof(float) * 6];
@@ -93,6 +98,10 @@ class Drone_com {
     uint8_t drone_header_byte[9+2*sizeof(float)];
     float* magwick_data = (float*)calloc(3, sizeof(float));
     uint8_t magwick_data_byte[sizeof(float) * 3];
+    uint16_t* lidar_distance_data = (uint16_t*)calloc(1, sizeof(uint16_t));
+    uint16_t lidar_distance_byte[sizeof(uint16_t) * 1];
+
+
 
 
     static void onConnection(RTComSession& session);

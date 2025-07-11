@@ -10,6 +10,7 @@
             "includePath": [
                 "/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/Teensy_FC/include",
                 "/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/Teensy_FC/src",
+                "/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/Teensy_FC/.pio/libdeps/00Integrated/VL53L1X",
                 "/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/Teensy_FC/.pio/libdeps/00Integrated/Bolder Flight Systems Eigen/src",
                 "/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/Teensy_FC/.pio/libdeps/00Integrated/QNEthernet/include",
                 "/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/Teensy_FC/.pio/libdeps/00Integrated/QNEthernet/src",
@@ -29,6 +30,7 @@
                 "/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/Teensy_FC/src/03PID_Loop",
                 "/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/Teensy_FC/src/04Volt_Curr",
                 "/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/Teensy_FC/src/05TuningApp",
+                "/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/Teensy_FC/src/10LiDAR",
                 "/Users/amitgedj/.platformio/packages/framework-arduinoteensy/cores/teensy4",
                 "/Users/amitgedj/.platformio/packages/framework-arduinoteensy/libraries/ADC",
                 "/Users/amitgedj/.platformio/packages/framework-arduinoteensy/libraries/AccelStepper/src",
@@ -132,6 +134,7 @@
                 "path": [
                     "/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/Teensy_FC/include",
                     "/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/Teensy_FC/src",
+                    "/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/Teensy_FC/.pio/libdeps/00Integrated/VL53L1X",
                     "/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/Teensy_FC/.pio/libdeps/00Integrated/Bolder Flight Systems Eigen/src",
                     "/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/Teensy_FC/.pio/libdeps/00Integrated/QNEthernet/include",
                     "/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/Teensy_FC/.pio/libdeps/00Integrated/QNEthernet/src",
@@ -151,6 +154,7 @@
                     "/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/Teensy_FC/src/03PID_Loop",
                     "/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/Teensy_FC/src/04Volt_Curr",
                     "/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/Teensy_FC/src/05TuningApp",
+                    "/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/Teensy_FC/src/10LiDAR",
                     "/Users/amitgedj/.platformio/packages/framework-arduinoteensy/cores/teensy4",
                     "/Users/amitgedj/.platformio/packages/framework-arduinoteensy/libraries/ADC",
                     "/Users/amitgedj/.platformio/packages/framework-arduinoteensy/libraries/AccelStepper/src",
