@@ -33,6 +33,9 @@ uint16_t channels[16];  // RC channel values
 int PWM = 0;
 float PWM_val = 0;
 
+// Prototypes
+void printChannels();
+
 void setup() {
     Serial.begin(115200);  // USB Serial for debugging
     // while (!Serial); // Wait for the Serial Monitor to open

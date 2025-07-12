@@ -1,6 +1,6 @@
 #include "Voltmeter.h"
 
-Voltmeter::Voltmeter(Drone_Data_t *drone_data ,int voltmeterPin, int currentPin , int voltmeter_calibration_factor) {
+Voltmeter::Voltmeter(Drone_Data_t *drone_data ,int voltmeterPin, int currentPin , float voltmeter_calibration_factor) {
     _drone_data = drone_data;
     _voltmeterPin = voltmeterPin;
     _currentPin = currentPin;

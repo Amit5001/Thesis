@@ -46,7 +46,7 @@ attitude_t estimated_rate;
 PID_out_t PID_stab_out;
 PID_out_t PID_rate_out;
 Drone_Data_t drone_data_header;
-Voltmeter voltmeter(&drone_data_header, A3, A2, 30.75);
+Voltmeter voltmeter(&drone_data_header, A3, A2, 30.54);
 Drone_com drone_com(&meas, &q_est, &desired_attitude, &motor_pwm,
                     &desired_rate, &estimated_attitude, &estimated_rate, &PID_stab_out, &PID_rate_out,
                     &controller_data, &drone_tune, &drone_data_header, &comp_filter, &lidar_distance);
