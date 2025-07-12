@@ -24,6 +24,15 @@ Controller_s controller_data;
 // Motors Variables:
 Motors motors(MOTOR1_PIN, MOTOR2_PIN, MOTOR3_PIN, MOTOR4_PIN);
 
+// LiDAR Configuration
+bool io_2v8 = true;  // Use 2.8V IO
+uint16_t TimingBudget = 33000;  // 33ms
+uint16_t MeasurementPeriod = 33;  // 33ms - new measurement after 33ms, Which is 30Hz (30 measurements per second)
+uint16_t Timeout = 5000;  // 5 seconds
+uint8_t xshut_pin = 26;  // Pin for XSHUT control
+Lidar_VL53L1X lidar(true, VL53L1X::Long, TimingBudget, MeasurementPeriod, Timeout, xshut_pin, Wire2);
+float lidar_distance = 0;  // Variable to store the distance read from the LiDAR sensor
+
 Measurement_t meas;
 IMU_Func imu(&meas, SAMPLE_RATE);
 drone_tune_t drone_tune;
@@ -40,7 +49,7 @@ Drone_Data_t drone_data_header;
 Voltmeter voltmeter(&drone_data_header, A3, A2, 30.75);
 Drone_com drone_com(&meas, &q_est, &desired_attitude, &motor_pwm,
                     &desired_rate, &estimated_attitude, &estimated_rate, &PID_stab_out, &PID_rate_out,
-                    &controller_data, &drone_tune, &drone_data_header, &comp_filter);
+                    &controller_data, &drone_tune, &drone_data_header, &comp_filter, &lidar_distance);
 
 elapsedMicros motor_timer;
 elapsedMicros stab_timer;
@@ -56,15 +65,6 @@ STD_Filter std_filter(&meas, SAMPLE_RATE);
 double t_PID_s = 0.0f;
 double t_PID_r = 0.0f;
 float actual_dt = 0.0f;
-
-// LiDAR Configuration
-bool io_2v8 = true;  // Use 2.8V IO
-uint16_t TimingBudget = 33000;  // 33ms
-uint16_t MeasurementPeriod = 33;  // 33ms - new measurement after 33ms, Which is 30Hz (30 measurements per second)
-uint16_t Timeout = 5000;  // 5 seconds
-uint8_t xshut_pin = 26;  // Pin for XSHUT control
-Lidar_VL53L1X lidar(true, VL53L1X::Long, TimingBudget, MeasurementPeriod, Timeout, xshut_pin, Wire2);
-uint16_t lidar_distance = 0;  // Variable to store the distance read from the LiDAR sensor
 
 
 /*
@@ -151,6 +151,13 @@ void loop() {
         }
 
         if (send_data_timer >= SEND_DATA_PERIOD) {
+            // Reading liDAR distance
+            lidar_distance = lidar.readDistance();
+            if (lidar_distance < 0) {
+                lidar_distance = 0;  // Ensure distance is non-negative
+            }
+            // Serial.println(lidar_distance);  // Print LiDAR distance for debugging
+            // Send data through the drone_com class:
             drone_com.convert_Measurment_to_byte();
             drone_com.send_data();
             send_data_timer = 0;

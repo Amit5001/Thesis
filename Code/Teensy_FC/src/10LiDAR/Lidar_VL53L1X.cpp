@@ -75,8 +75,8 @@ void Lidar_VL53L1X::resetSensor() {
     }
 }
 
-uint16_t Lidar_VL53L1X::readDistance() {
-    uint16_t distance = sensor.read();
+float Lidar_VL53L1X::readDistance() {
+    float distance = sensor.read();
     
     if (sensor.ranging_data.range_status == VL53L1X::RangeValid) {
         return distance;

@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/altitude_lidar__functions.c.o"
+  "CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/altitude_lidar__functions.c.o.d"
   "CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/drone_header__functions.c.o"
   "CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/drone_header__functions.c.o.d"
   "CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/euler_angles__functions.c.o"
@@ -15,6 +17,11 @@ file(REMOVE_RECURSE
   "CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/pid_consts__functions.c.o.d"
   "libdrone_c__rosidl_generator_c.dylib"
   "libdrone_c__rosidl_generator_c.pdb"
+  "rosidl_generator_c/drone_c/msg/altitude_lidar.h"
+  "rosidl_generator_c/drone_c/msg/detail/altitude_lidar__functions.c"
+  "rosidl_generator_c/drone_c/msg/detail/altitude_lidar__functions.h"
+  "rosidl_generator_c/drone_c/msg/detail/altitude_lidar__struct.h"
+  "rosidl_generator_c/drone_c/msg/detail/altitude_lidar__type_support.h"
   "rosidl_generator_c/drone_c/msg/detail/drone_header__functions.c"
   "rosidl_generator_c/drone_c/msg/detail/drone_header__functions.h"
   "rosidl_generator_c/drone_c/msg/detail/drone_header__struct.h"

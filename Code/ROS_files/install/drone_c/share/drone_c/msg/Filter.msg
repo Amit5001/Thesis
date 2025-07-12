@@ -1,1 +1,3 @@
-/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/src/drone_c/msg/Filter.msg
+float32 std_beta
+float32 high_beta 
+float32 low_beta

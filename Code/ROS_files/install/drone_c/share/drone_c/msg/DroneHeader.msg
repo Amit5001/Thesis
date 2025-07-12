@@ -1,1 +1,6 @@
-/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/src/drone_c/msg/DroneHeader.msg
+int32[6] mac_adress
+int32 drone_mode
+int32 drone_filter
+bool is_armed
+float32 voltage 
+float32 current 

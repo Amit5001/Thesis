@@ -1,1 +1,6 @@
-/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/src/drone_c/msg/PidConsts.msg
+float32[3] rate_pitch
+float32[3] rate_roll
+float32[3] stablize_pitch
+float32[3] stablize_roll
+float32[3] rate_yaw
+

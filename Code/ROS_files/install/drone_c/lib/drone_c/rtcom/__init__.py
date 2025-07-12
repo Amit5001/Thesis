@@ -1,1 +1,12 @@
-/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/src/drone_c/src/rtcom/__init__.py
+__version__ = "1.2.5"
+
+from .core import SocketAddress, PacketTypes, ConnectionTypes, RTComException
+from .rtcom_client import RTComClient
+
+__all__ = [
+    'SocketAddress',
+    'PacketTypes',
+    'ConnectionTypes',
+    'RTComException',
+    'RTComClient'
+]

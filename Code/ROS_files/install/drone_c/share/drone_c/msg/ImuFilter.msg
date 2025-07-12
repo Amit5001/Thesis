@@ -1,1 +1,12 @@
-/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/src/drone_c/msg/ImuFilter.msg
+float32 acc_lpf_x
+float32 acc_lpf_y
+float32 acc_lpf_z
+float32 gyro_hpf_x
+float32 gyro_hpf_y
+float32 gyro_hpf_z
+float32 gyro_lpf_x
+float32 gyro_lpf_y
+float32 gyro_lpf_z
+float32 mag_lpf_x
+float32 mag_lpf_y
+float32 mag_lpf_z

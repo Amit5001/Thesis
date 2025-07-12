@@ -1,3 +1,5 @@
+msg/AltitudeLidar.idl
+msg/AltitudeLidar.msg
 msg/DroneHeader.idl
 msg/DroneHeader.msg
 msg/EulerAngles.idl

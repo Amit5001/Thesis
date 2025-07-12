@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/drone_c__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/drone_c/msg/detail/altitude_lidar__type_support.cpp.o"
+  "CMakeFiles/drone_c__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/drone_c/msg/detail/altitude_lidar__type_support.cpp.o.d"
   "CMakeFiles/drone_c__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/drone_c/msg/detail/drone_header__type_support.cpp.o"
   "CMakeFiles/drone_c__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/drone_c/msg/detail/drone_header__type_support.cpp.o.d"
   "CMakeFiles/drone_c__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/drone_c/msg/detail/euler_angles__type_support.cpp.o"
@@ -15,6 +17,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/drone_c__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/drone_c/msg/detail/pid_consts__type_support.cpp.o.d"
   "libdrone_c__rosidl_typesupport_introspection_cpp.dylib"
   "libdrone_c__rosidl_typesupport_introspection_cpp.pdb"
+  "rosidl_typesupport_introspection_cpp/drone_c/msg/detail/altitude_lidar__rosidl_typesupport_introspection_cpp.hpp"
+  "rosidl_typesupport_introspection_cpp/drone_c/msg/detail/altitude_lidar__type_support.cpp"
   "rosidl_typesupport_introspection_cpp/drone_c/msg/detail/drone_header__rosidl_typesupport_introspection_cpp.hpp"
   "rosidl_typesupport_introspection_cpp/drone_c/msg/detail/drone_header__type_support.cpp"
   "rosidl_typesupport_introspection_cpp/drone_c/msg/detail/euler_angles__rosidl_typesupport_introspection_cpp.hpp"

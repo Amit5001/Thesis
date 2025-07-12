@@ -1,1 +1,6 @@
-/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/src/drone_c/msg/Motors.msg
+float32 front_right
+float32 back_right
+float32 front_left
+float32 back_left
+
+

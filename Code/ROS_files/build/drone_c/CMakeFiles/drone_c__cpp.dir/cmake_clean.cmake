@@ -1,5 +1,9 @@
 file(REMOVE_RECURSE
   "CMakeFiles/drone_c__cpp"
+  "rosidl_generator_cpp/drone_c/msg/altitude_lidar.hpp"
+  "rosidl_generator_cpp/drone_c/msg/detail/altitude_lidar__builder.hpp"
+  "rosidl_generator_cpp/drone_c/msg/detail/altitude_lidar__struct.hpp"
+  "rosidl_generator_cpp/drone_c/msg/detail/altitude_lidar__traits.hpp"
   "rosidl_generator_cpp/drone_c/msg/detail/drone_header__builder.hpp"
   "rosidl_generator_cpp/drone_c/msg/detail/drone_header__struct.hpp"
   "rosidl_generator_cpp/drone_c/msg/detail/drone_header__traits.hpp"

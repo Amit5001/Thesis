@@ -12,6 +12,9 @@ config/drone_config.yaml
 config/drone_mac.yaml
 drone_tuner/__init__.py
 drone_tuner/drone_tuner.py
+drone_tuner/pid_values.yaml
+drone_tuner/__pycache__/__init__.cpython-310.pyc
+drone_tuner/__pycache__/drone_tunner.cpython-310.pyc
 resource/drone_tuner
 test/test_copyright.py
 test/test_flake8.py

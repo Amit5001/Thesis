@@ -75,7 +75,7 @@ public:
     }
     
     bool init_Lidar();
-    uint16_t readDistance();
+    float readDistance();
     bool dataReady();
     VL53L1X::RangeStatus getRangeStatus();
     float getPeakSignalRate();

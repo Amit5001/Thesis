@@ -5,13 +5,14 @@ import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Imu, MagneticField
 from std_msgs.msg import Float32MultiArray, Int32MultiArray
-from drone_c.msg import Pid, Motors, EulerAngles, ImuFilter, PidConsts, DroneHeader, Filter, LidarDistance
+from drone_c.msg import Pid, Motors, EulerAngles, ImuFilter, PidConsts, DroneHeader, Filter, AltitudeLidar
 from rtcom import *
 import time
 import math
 
 FLOAT_SIZE = struct.calcsize('f')
 INT_SIZE = struct.calcsize('i')
+UINT16_SIZE = struct.calcsize('H')
 
 
 class UDPSocketClient(Node):
@@ -37,6 +38,8 @@ class UDPSocketClient(Node):
         self.drone_header_pub = self.create_publisher(DroneHeader, 'drone_header', 10)
         self.Pid_consts_pub = self.create_publisher(PidConsts, 'pid_loaded', 10)
         self.current_magwick_return_data = self.create_publisher(Filter, 'current_magwick_return_data', 10)
+        self.lidar_distance_pub = self.create_publisher(AltitudeLidar, 'current_lidar_distance', 10)    
+
         self.pid_to_flash_sub = self.create_subscription(
             PidConsts,
             'pid_to_flash',
@@ -263,9 +266,10 @@ class UDPSocketClient(Node):
 
     def lidar_distance_callback(self, message: bytes):
         messages_struct_float = struct.unpack("f" * (len(message) // FLOAT_SIZE), message)
-        lidar_distance_msg = LidarDistance()
+        lidar_distance_msg = AltitudeLidar()
         lidar_distance_msg.distance = round(messages_struct_float[0], 3)
-        self.current_lidar_distance.publish(lidar_distance_msg)
+        # print(lidar_distance_msg.distance)
+        self.lidar_distance_pub.publish(lidar_distance_msg)
 
     def send_filter_consts(self, msg: Filter):
         data = []

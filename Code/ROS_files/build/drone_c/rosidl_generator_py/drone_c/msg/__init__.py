@@ -1,3 +1,4 @@
+from drone_c.msg._altitude_lidar import AltitudeLidar  # noqa: F401
 from drone_c.msg._drone_header import DroneHeader  # noqa: F401
 from drone_c.msg._euler_angles import EulerAngles  # noqa: F401
 from drone_c.msg._filter import Filter  # noqa: F401

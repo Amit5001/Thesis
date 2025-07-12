@@ -1,1 +1,0 @@
-ament_cmake_symlink_install_targets("TARGET_FILES" "/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/GitHub/ROS_files/build/drone_c/rosidl_generator_py/drone_c/drone_c_s__rosidl_typesupport_c.cpython-310-darwin.so" "TARGETS" "drone_c__rosidl_typesupport_c__pyext" "DESTINATION" "lib/python3.10/site-packages/drone_c")

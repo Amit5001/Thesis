@@ -16,6 +16,7 @@ Controller_s* Drone_com::_controller_data = nullptr;
 drone_tune_t* Drone_com::_drone_tune = nullptr;
 Drone_Data_t* Drone_com::_drone_data_header = nullptr;
 CompFilter* Drone_com::_comfilter = nullptr;
+float* Drone_com::_lidar_distance = nullptr;
 
 void Drone_com::onConnection(RTComSession& session) {
     Serial.printf("Session created with %s\r\n", session.address.toString());
@@ -61,7 +62,7 @@ void Drone_com::onConnection(RTComSession& session) {
 Drone_com::Drone_com(Measurement_t* meas, quat_t* q_est, attitude_t* desired_attitude, motor_t* motor_pwm,
                      attitude_t* desired_rate, attitude_t* estimated_attitude, attitude_t* estimated_rate,
                      PID_out_t* PID_stab_out, PID_out_t* PID_rate_out, Controller_s* controller_data,
-                     drone_tune_t* drone_tune, Drone_Data_t* drone_data_header, CompFilter* comfilter, uint16_t* lidar_distance)
+                     drone_tune_t* drone_tune, Drone_Data_t* drone_data_header, CompFilter* comfilter, float* lidar_distance)
     : rtcomSocket(SOCKET_ADDRESS, SOCKET_CONFIG)  // Initialize rtcomSocket with both address and config
 {
     _meas = meas;
@@ -241,7 +242,7 @@ void Drone_com::emit_data() {
     socketSession->emitTyped(pid_consts_byte, sizeof(pid_consts_byte), PID_CONSTS_DATA);
     socketSession->emitTyped(drone_header_byte, sizeof(drone_header_byte), DRONE_SIGNATURE);
     socketSession->emitTyped(magwick_data_byte, sizeof(magwick_data_byte), MAGWICK_DATA);
-    socketSession->emitTyped((uint8_t*)lidar_distance_byte, sizeof(lidar_distance_byte), ALTITUDE_DATA);
+    socketSession->emitTyped(lidar_distance_byte, sizeof(lidar_distance_byte), ALTITUDE_DATA);
 }
 
 void Drone_com::send_data() {
