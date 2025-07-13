@@ -46,7 +46,7 @@ attitude_t estimated_rate;
 PID_out_t PID_stab_out;
 PID_out_t PID_rate_out;
 Drone_Data_t drone_data_header;
-Voltmeter voltmeter(&drone_data_header, A3, A2, 30.54);
+Voltmeter voltmeter(&drone_data_header, A3, A2, 122.22955, 0.0518, 0.41);  // Calibration factors for voltage and current
 Drone_com drone_com(&meas, &q_est, &desired_attitude, &motor_pwm,
                     &desired_rate, &estimated_attitude, &estimated_rate, &PID_stab_out, &PID_rate_out,
                     &controller_data, &drone_tune, &drone_data_header, &comp_filter, &lidar_distance);
@@ -100,7 +100,7 @@ void setup() {
     getbot_param(drone_tune, drone_data_header);  // Extracting the parameters for this specific drone.
     setPID_params(&drone_tune.pid_const);
     comp_filter.set_beta(&drone_tune.filter_data);
-    imu.Initial_Calibration();
+    // imu.Initial_Calibration();
     motors.Motors_init();
 }
 
