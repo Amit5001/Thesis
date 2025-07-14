@@ -8,6 +8,7 @@
 void setPID_params(PID_const_t* pid_consts);
 PID_out_t PID_rate(attitude_t des_rate, attitude_t actual_rate, float DT);
 PID_out_t PID_stab(attitude_t des_angle, attitude_t angle, float DT);
+uint16_t Altitude_Controller(float des_alt, float actual_alt,float current);
 void Reset_PID();
 
 #endif

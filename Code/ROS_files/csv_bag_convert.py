@@ -5,6 +5,7 @@ from rclpy.serialization import deserialize_message
 from rosidl_runtime_py.utilities import get_message
 from rosbag2_py import SequentialReader, StorageOptions, ConverterOptions
 import numpy as np
+import re
 from pathlib import Path
 
 def extract_message_fields(message, prefix=""):
@@ -52,7 +53,7 @@ def get_message_headers(message):
     sample_fields = extract_message_fields(message)
     return ['timestamp'] + list(sample_fields.keys())
 
-def extract_rosbag_to_csv(bag_path, output_dir, merge_option="default"):
+def extract_rosbag_to_csv(bag_path, output_dir, merge_option="default", apply_column_filter=True):
     rclpy.init()
 
     # Create the reader for the bag file
@@ -116,7 +117,7 @@ def extract_rosbag_to_csv(bag_path, output_dir, merge_option="default"):
         print(f"\n💡 Skipped creating merged file (--no-merge specified)")
     elif merge_option == "all":
         # Merge ALL CSV files into one
-        merged_file = merge_all_csv_files(output_dir)
+        merged_file = merge_all_csv_files(output_dir, apply_column_filter)
         if merged_file:
             print(f"\n✅ Successfully merged all CSV files into one file!")
         else:
@@ -136,13 +137,25 @@ def load_csv_manually(file_path):
     
     try:
         with open(file_path, 'r', newline='') as csvfile:
-            # Try to detect the dialect
-            sample = csvfile.read(1024)
-            csvfile.seek(0)
-            sniffer = csv.Sniffer()
-            dialect = sniffer.sniff(sample)
+            # Try multiple strategies to read the CSV
+            reader = None
             
-            reader = csv.reader(csvfile, dialect)
+            # Strategy 1: Try to detect the dialect
+            try:
+                sample = csvfile.read(1024)
+                csvfile.seek(0)
+                sniffer = csv.Sniffer()
+                dialect = sniffer.sniff(sample)
+                reader = csv.reader(csvfile, dialect)
+            except:
+                # Strategy 2: Use standard comma delimiter
+                csvfile.seek(0)
+                reader = csv.reader(csvfile, delimiter=',')
+            
+            if reader is None:
+                # Strategy 3: Try semicolon delimiter
+                csvfile.seek(0)
+                reader = csv.reader(csvfile, delimiter=';')
             
             # Read headers
             headers = next(reader)
@@ -157,9 +170,27 @@ def load_csv_manually(file_path):
                             if headers[i] == 'timestamp':
                                 converted_row.append(int(float(value)))  # timestamp as int
                             else:
-                                converted_row.append(float(value))  # other values as float
+                                try:
+                                    # Try to convert to float first
+                                    float_val = float(value)
+                                    converted_row.append(float_val)
+                                except (ValueError, TypeError):
+                                    # If float conversion fails, try to handle special cases
+                                    if value.strip() == '' or value.lower() in ['nan', 'inf', '-inf']:
+                                        converted_row.append(0.0)  # Use 0.0 for empty/invalid values
+                                    else:
+                                        # For truly non-numeric data, try to extract a number or use 0
+                                        try:
+                                            # Try to extract first number from string
+                                            numbers = re.findall(r'-?\d+\.?\d*', str(value))
+                                            if numbers:
+                                                converted_row.append(float(numbers[0]))
+                                            else:
+                                                converted_row.append(0.0)
+                                        except:
+                                            converted_row.append(0.0)
                         data.append(converted_row)
-                    except ValueError:
+                    except (ValueError, TypeError):
                         continue  # Skip rows with conversion errors
         
         return headers, data
@@ -169,8 +200,22 @@ def load_csv_manually(file_path):
         return None, None
 
 def interpolate_data(timestamps, values, target_timestamps):
-    """Simple linear interpolation"""
-    return np.interp(target_timestamps, timestamps, values)
+    """Simple linear interpolation for numeric data"""
+    try:
+        # Convert to numpy arrays and ensure they're numeric
+        timestamps = np.array(timestamps, dtype=float)
+        values = np.array(values, dtype=float)
+        target_timestamps = np.array(target_timestamps, dtype=float)
+        
+        return np.interp(target_timestamps, timestamps, values)
+    except (ValueError, TypeError) as e:
+        # If interpolation fails (e.g., non-numeric data), return the closest value
+        if len(values) > 0:
+            # Find the closest timestamp
+            closest_idx = np.argmin(np.abs(np.array(timestamps, dtype=float) - target_timestamps[0]))
+            return [values[closest_idx]]
+        else:
+            return [0.0]  # Default value if no data available
 
 def create_merged_flight_data(output_dir):
     """Create a merged flight data file from the individual CSV files"""
@@ -279,11 +324,13 @@ def create_merged_flight_data(output_dir):
     
     return merged_file_path
 
-def merge_all_csv_files(output_dir):
+def merge_all_csv_files(output_dir, apply_column_filter=True):
     """Merge ALL CSV files into a single CSV file with timestamps"""
     output_dir = Path(output_dir)
     
     print("\nMerging all CSV files into one...")
+    if apply_column_filter:
+        print("  Applying column filtering to remove unwanted data")
     
     # Define files to ignore during merging
     ignore_files = {
@@ -296,7 +343,8 @@ def merge_all_csv_files(output_dir):
         '_events_write_split.csv',
         '_current_magwick_return_data.csv',
         'merged_flight_data.csv',
-        'merged_all_data.csv'
+        'merged_all_data.csv',
+        'merged_all_data_filtered.csv'
     }
     
     # Find all CSV files in the directory
@@ -358,6 +406,18 @@ def merge_all_csv_files(output_dir):
             prefixed_header = f"{topic_name}_{header}"
             output_headers.append(prefixed_header)
     
+    # Apply column filtering if requested
+    if apply_column_filter:
+        columns_to_keep, removed_columns = filter_columns(output_headers, apply_column_filter)
+        filtered_headers = [output_headers[i] for i in columns_to_keep]
+        
+        if removed_columns:
+            print(f"  Filtering out {len(removed_columns)} unwanted columns:")
+            for col in sorted(removed_columns):
+                print(f"    - {col}")
+        
+        output_headers = filtered_headers
+    
     # Interpolate each data source to common timestamps
     output_data = []
     
@@ -374,6 +434,11 @@ def merge_all_csv_files(output_dir):
             
             # Interpolate each column (skip timestamp column)
             for col_idx in range(1, len(headers)):
+                # Check if this column should be included after filtering
+                prefixed_header = f"{topic_name}_{headers[col_idx]}"
+                if apply_column_filter and prefixed_header not in output_headers:
+                    continue  # Skip filtered out columns
+                
                 values = [row[col_idx] for row in data]
                 interpolated_value = interpolate_data(source_timestamps, values, [common_ts])[0]
                 row.append(interpolated_value)
@@ -381,17 +446,64 @@ def merge_all_csv_files(output_dir):
         output_data.append(row)
     
     # Write merged CSV
-    merged_file_path = output_dir / 'merged_all_data.csv'
+    output_filename = 'merged_all_data_filtered.csv' if apply_column_filter else 'merged_all_data.csv'
+    merged_file_path = output_dir / output_filename
     with open(merged_file_path, 'w', newline='') as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(output_headers)
         writer.writerows(output_data)
     
-    print(f"  All data merged and saved to: merged_all_data.csv")
+    print(f"  All data merged and saved to: {output_filename}")
     print(f"  Total records: {len(output_data)}")
     print(f"  Total columns: {len(output_headers)}")
     
     return merged_file_path
+
+def filter_columns(headers, apply_filter=True):
+    """Filter out unwanted columns from headers list"""
+    if not apply_filter:
+        return list(range(len(headers))), []
+    
+    # Define columns to remove
+    columns_to_remove = [
+        '_imu_data_orientation_covariance',
+        '_imu_data_header',
+        '_imu_data_angular_velocity_covariance', 
+        '_imu_data_linear_acceleration_covariance',
+        '_desire_stab_layout.data_offset',
+        '_rc_channel_data_layout.data_offset'
+    ]
+    
+    # Patterns for columns to remove (for complex patterns like all _imu_filter acc,gyro,mag)
+    column_patterns_to_remove = [
+        r'_imu_filter_.*acc.*',  # All _imu_filter columns containing 'acc'
+        r'_imu_filter_.*gyro.*', # All _imu_filter columns containing 'gyro' 
+        r'_imu_filter_.*mag.*'   # All _imu_filter columns containing 'mag'
+    ]
+    
+    # Determine which columns to keep
+    columns_to_keep = []
+    removed_columns = []
+    
+    for i, header in enumerate(headers):
+        should_remove = False
+        
+        # Check exact matches
+        if header in columns_to_remove:
+            should_remove = True
+            removed_columns.append(header)
+        
+        # Check pattern matches
+        for pattern in column_patterns_to_remove:
+            if re.match(pattern, header):
+                should_remove = True
+                removed_columns.append(header)
+                break
+        
+        if not should_remove:
+            columns_to_keep.append(i)
+    
+    return columns_to_keep, removed_columns
 
 if __name__ == '__main__':
     import argparse
@@ -404,6 +516,9 @@ if __name__ == '__main__':
     merge_group = parser.add_mutually_exclusive_group()
     merge_group.add_argument('--merge', choices=['all'], help="Merge options: 'all' = merge all CSV files into one")
     merge_group.add_argument('--no-merge', action='store_true', help="Skip creating any merged files")
+    
+    # Column filtering option
+    parser.add_argument('--no-filter', action='store_true', help="Skip column filtering (keep all columns)")
 
     args = parser.parse_args()
 
@@ -414,5 +529,8 @@ if __name__ == '__main__':
         merge_option = "all"
     else:
         merge_option = "default"  # Default: create merged flight data file
+    
+    # Determine column filtering
+    apply_column_filter = not args.no_filter
 
-    extract_rosbag_to_csv(args.bag, args.output, merge_option)
+    extract_rosbag_to_csv(args.bag, args.output, merge_option, apply_column_filter)

@@ -28,7 +28,7 @@ Motors motors(MOTOR1_PIN, MOTOR2_PIN, MOTOR3_PIN, MOTOR4_PIN);
 bool io_2v8 = true;  // Use 2.8V IO
 uint16_t TimingBudget = 33000;  // 33ms
 uint16_t MeasurementPeriod = 33;  // 33ms - new measurement after 33ms, Which is 30Hz (30 measurements per second)
-uint16_t Timeout = 5000;  // 5 seconds
+uint16_t Timeout = 1000;  // 1 seconds
 uint8_t xshut_pin = 26;  // Pin for XSHUT control
 Lidar_VL53L1X lidar(true, VL53L1X::Long, TimingBudget, MeasurementPeriod, Timeout, xshut_pin, Wire2);
 float lidar_distance = 0;  // Variable to store the distance read from the LiDAR sensor
@@ -49,13 +49,15 @@ Drone_Data_t drone_data_header;
 Voltmeter voltmeter(&drone_data_header, A3, A2, 122.22955, 0.0518, 0.41);  // Calibration factors for voltage and current
 Drone_com drone_com(&meas, &q_est, &desired_attitude, &motor_pwm,
                     &desired_rate, &estimated_attitude, &estimated_rate, &PID_stab_out, &PID_rate_out,
-                    &controller_data, &drone_tune, &drone_data_header, &comp_filter, &lidar_distance);
+                    &controller_data, &drone_tune, &drone_data_header, &comp_filter, &meas.lidar_distance);
 
 elapsedMicros motor_timer;
 elapsedMicros stab_timer;
 elapsedMicros imu_timer;
 elapsedMicros send_data_timer;
 elapsedMicros estimated_filter_timer;
+elapsedMicros altitude_timer;
+
 
 
 
@@ -117,6 +119,10 @@ void loop() {
         estimated_state_method();
         voltmeter.read_bat_data();
 
+        if (altitude_timer >= ALT_PERIOD){
+            meas.lidar_distance = lidar.readDistance() /1000.0f; //converting mm to m
+            altitude_timer = 0;
+        }
 
         if (drone_data_header.is_armed) {
             // Get Actual rates:
@@ -134,6 +140,11 @@ void loop() {
                 desired_rate = PID_stab_out.PID_ret;
                 desired_rate.yaw = map(controller_data.yaw, CONTROLLER_MIN, CONTROLLER_MAX, MAX_RATE, -MAX_RATE);
                 stab_timer = 0;
+
+                if (controller_data.aux1 <2000){ // A condition for altitude hold
+                    
+                }
+
             } else if (controller_data.aux1 < 1500) {  // Acro mode:
                 drone_data_header.drone_mode = DroneMode::MODE_RATE;
                 mapping_controller();
@@ -151,11 +162,11 @@ void loop() {
         }
 
         if (send_data_timer >= SEND_DATA_PERIOD) {
-            // Reading liDAR distance
-            lidar_distance = lidar.readDistance();
-            if (lidar_distance < 0) {
-                lidar_distance = 0;  // Ensure distance is non-negative
-            }
+            // // Reading liDAR distance
+            // lidar_distance = lidar.readDistance();
+            // if (lidar_distance < 0) {
+            //     lidar_distance = 0;  // Ensure distance is non-negative
+            // }
             // Serial.println(lidar_distance);  // Print LiDAR distance for debugging
             // Send data through the drone_com class:
             drone_com.convert_Measurment_to_byte();
@@ -253,5 +264,25 @@ void estimated_state_method() {
             return;
         default:
             return ekf.run_kalman(&estimated_attitude, &q_est);
+    }
+}
+
+void mapping_thrust(){
+    // If the throttle is above the middle point, the desired altitude will increase, if its below the middle point, the desired altitude will decrease.
+    // This function maps the throttle to adding or subtracting from the current altitude.
+    if (controller_data.throttle > CONTROLL_THR_MAX) {
+        // If the throttle is above the middle point, we increase the desired altitude.
+        meas.desired_alt += 0.1f;  // Increase by 0.1 meters
+    } else if (controller_data.throttle < CONTROLL_THR_MIN) {
+        // If the throttle is below the middle point, we decrease the desired altitude.
+        meas.desired_alt -= 0.1f;  // Decrease by 0.1 meters
+    }
+    // Ensure the desired altitude does not go below zero
+    if (meas.desired_alt < 0.0f) {
+        meas.desired_alt = 0.0f;  // Reset desired altitude to 0 if it goes below 0
+    }
+    // Ensure the desired altitude wont exceed maximum altitude of 3
+    if (meas.desired_alt > 3.0f) {
+        meas.desired_alt = 3.0f;  // Reset desired altitude to 3 if it goes above 3
     }
 }

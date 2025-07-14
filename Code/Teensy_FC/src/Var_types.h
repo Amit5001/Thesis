@@ -15,6 +15,7 @@ static const float DT = 1.0f / SAMPLE_RATE;
 
 const unsigned long STAB_PERIOD = 1000000 / STAB_FREQUENCY;  // 200 Hz period in microseconds
 const unsigned long MOTOR_PERIOD = 1000000 / ESC_FREQUENCY;  // 1,000,000 us / frequency in Hz
+const unsigned long ALT_PERIOD = 1000000 / 30;  // 50 Hz period in microseconds
 const unsigned long IMU_PERIOD = 1000000 / SAMPLE_RATE;
 const unsigned long SEND_DATA_PERIOD = 1000000 / 50;  // 50 Hz
 
@@ -70,6 +71,8 @@ typedef struct {
     vec3_t initial_mag = {0.0, 0.0, 0.0};
     float initial_heading = 0.0;
     baro_t baro_data;
+    float lidar_distance = 0.0;  // Distance from LiDAR sensor
+    float desired_alt = 0.0;  // Desired altitude
 } Measurement_t;
 
 typedef struct attitude_s {
@@ -176,6 +179,28 @@ typedef struct PID_out_s {
 
 } PID_out_t;
 
+typedef struct Altitude_PID_s {
+    float AltP;
+    float AltI;
+    float AltD;
+    float Alpha_alt;
+    float AltD_tau;
+    float Imax_alt;
+
+} Altitude_PID_t;
+
+typedef struct Altitude_PID_out_s {
+    float error = 0.0;
+    float P_term = 0.0;
+    float I_term = 0.0;
+    float D_term = 0.0;
+    float PID_ret = 0.0;
+    float prev_err = 0.0;
+    float prev_Iterm = 0.0;
+    float prev_Dterm = 0.0;
+
+} Altitude_PID_out_t;
+
 typedef struct motor_s {
     int M1_pin;
     int M2_pin;
@@ -206,9 +231,6 @@ typedef struct state_s {
     vec3_t position;
     vec3_t acceleration;
 } state_t;
-
-/////// pid config
-
 
 
 #endif

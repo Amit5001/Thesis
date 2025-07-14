@@ -38,13 +38,13 @@ bool Lidar_VL53L1X::init_Lidar() {
     }
     
     // Configure Region of Interest (ROI) to full 16x16 array
-    sensor.setROISize(16, 16);
+    sensor.setROISize(8, 8);
     sensor.setROICenter(199); // Default center SPAD
     
     // Start continuous ranging measurements
     sensor.startContinuous(measurement_period);
     
-    Serial.println("VL53L1X sensor initialized successfully");
+    // Serial.println("VL53L1X sensor initialized successfully");
     return true;
 }
 
@@ -76,10 +76,9 @@ void Lidar_VL53L1X::resetSensor() {
 }
 
 float Lidar_VL53L1X::readDistance() {
-    float distance = sensor.read();
     
-    if (sensor.ranging_data.range_status == VL53L1X::RangeValid) {
-        return distance;
+    if (sensor.dataReady()) {
+        return float(sensor.read());
     }
     
     return 0;
