@@ -12,7 +12,6 @@ import math
 
 FLOAT_SIZE = struct.calcsize('f')
 INT_SIZE = struct.calcsize('i')
-UINT16_SIZE = struct.calcsize('H')
 
 
 class UDPSocketClient(Node):
@@ -38,7 +37,7 @@ class UDPSocketClient(Node):
         self.drone_header_pub = self.create_publisher(DroneHeader, 'drone_header', 10)
         self.Pid_consts_pub = self.create_publisher(PidConsts, 'pid_loaded', 10)
         self.current_magwick_return_data = self.create_publisher(Filter, 'current_magwick_return_data', 10)
-        self.lidar_distance_pub = self.create_publisher(AltitudeLidar, 'current_lidar_distance', 10)    
+        self.lidar_distance_pub = self.create_publisher(AltitudeLidar, 'Altitude_lidar', 10)    
 
         self.pid_to_flash_sub = self.create_subscription(
             PidConsts,
@@ -268,7 +267,8 @@ class UDPSocketClient(Node):
         messages_struct_float = struct.unpack("f" * (len(message) // FLOAT_SIZE), message)
         lidar_distance_msg = AltitudeLidar()
         lidar_distance_msg.distance = round(messages_struct_float[0], 3)
-        # print(lidar_distance_msg.distance)
+        lidar_distance_msg.distance_des = round(messages_struct_float[1], 3)
+        # print(f"Distance: {lidar_distance_msg.distance}, Desired Distance: {lisdar_distance_msg.distance_des}")
         self.lidar_distance_pub.publish(lidar_distance_msg)
 
     def send_filter_consts(self, msg: Filter):

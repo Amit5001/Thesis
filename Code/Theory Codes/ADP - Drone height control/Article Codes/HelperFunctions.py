@@ -1,5 +1,6 @@
 import numpy as np
 import scipy as sp
+import pandas as pd
 
 def create_N_matrix(n):
     N = np.zeros((n ** 2, (n ** 2 + n) // 2))
@@ -191,3 +192,47 @@ def apply_fft(data, sampling_rate):
     phase = np.angle(fft_values)
 
     return freqs, magnitude, phase
+
+def adaptive_hpf(df, signal_col, time_col, cutoff_freq):
+    """
+    High-Pass Filter for pandas DataFrame with variable time steps
+    
+    Args:
+        df: pandas DataFrame
+        signal_col: name of the signal column to filter
+        time_col: name of the time column
+        cutoff_freq: cutoff frequency in Hz
+    
+    Returns:
+        filtered_signal: pandas Series with filtered values
+        alpha_values: pandas Series with alpha values used for each sample
+    """
+    # Get signal and time arrays
+    signal = df[signal_col].values
+    time = df[time_col].values
+    
+    # Initialize output arrays
+    filtered_signal = np.zeros_like(signal)
+    alpha_values = np.zeros_like(signal)
+    
+    # Define cutoff frequency
+    fc = cutoff_freq  # Hz
+    RC = 1 / (2 * np.pi * fc)  # RC time constant
+    
+    # Apply adaptive HPF
+    for i in range(len(signal)):
+        if i == 0:
+            filtered_signal[i] = 0  # First sample
+            alpha_values[i] = 0
+        else:
+            # Calculate actual dt between consecutive samples
+            dt = time[i] - time[i-1]
+            
+            # Calculate alpha for this specific dt
+            alpha = RC / (RC + dt)
+            alpha_values[i] = alpha
+            
+            # Apply HPF: y[n] = alpha * (y[n-1] + x[n] - x[n-1])
+            filtered_signal[i] = alpha * (filtered_signal[i-1] + signal[i] - signal[i-1])
+    
+    return pd.Series(filtered_signal, index=df.index), pd.Series(alpha_values, index=df.index)

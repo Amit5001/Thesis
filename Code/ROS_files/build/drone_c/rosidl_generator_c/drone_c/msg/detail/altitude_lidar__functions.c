@@ -18,6 +18,7 @@ drone_c__msg__AltitudeLidar__init(drone_c__msg__AltitudeLidar * msg)
     return false;
   }
   // distance
+  // distance_des
   return true;
 }
 
@@ -28,6 +29,7 @@ drone_c__msg__AltitudeLidar__fini(drone_c__msg__AltitudeLidar * msg)
     return;
   }
   // distance
+  // distance_des
 }
 
 bool
@@ -38,6 +40,10 @@ drone_c__msg__AltitudeLidar__are_equal(const drone_c__msg__AltitudeLidar * lhs, 
   }
   // distance
   if (lhs->distance != rhs->distance) {
+    return false;
+  }
+  // distance_des
+  if (lhs->distance_des != rhs->distance_des) {
     return false;
   }
   return true;
@@ -53,6 +59,8 @@ drone_c__msg__AltitudeLidar__copy(
   }
   // distance
   output->distance = input->distance;
+  // distance_des
+  output->distance_des = input->distance_des;
   return true;
 }
 

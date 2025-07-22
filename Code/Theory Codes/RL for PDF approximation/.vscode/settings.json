@@ -1,0 +1,9 @@
+{
+    "python.defaultInterpreterPath": "/opt/anaconda3/envs/Thesis/bin/python",
+    "python.terminal.activateEnvironment": true,
+    "terminal.integrated.env.osx": {
+        "CONDA_DEFAULT_ENV": "Thesis",
+        "CONDA_PREFIX": "/opt/anaconda3/envs/Thesis",
+        "PYTHONPATH": ""
+    }
+}

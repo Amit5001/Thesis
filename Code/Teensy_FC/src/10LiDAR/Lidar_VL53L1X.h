@@ -59,9 +59,9 @@ class Lidar_VL53L1X {
 public:
     Lidar_VL53L1X(bool io_2v8 = true,
                     VL53L1X::DistanceMode distance_mode = VL53L1X::Long,
-                    uint32_t timing_budget = 100000,
-                    uint32_t measurement_period = 100,
-                    uint16_t timeout = 10000,
+                    uint16_t timing_budget = 10000,
+                    uint16_t measurement_period = 33,
+                    uint16_t timeout = 0,
                     int8_t xshut_pin = 26,
                     TwoWire &i2c_bus = Wire2)
         : io_2v8(io_2v8),

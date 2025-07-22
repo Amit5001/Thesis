@@ -7,5 +7,6 @@
 #include "drone_c/msg/detail/altitude_lidar__struct.hpp"
 #include "drone_c/msg/detail/altitude_lidar__builder.hpp"
 #include "drone_c/msg/detail/altitude_lidar__traits.hpp"
+#include "drone_c/msg/detail/altitude_lidar__type_support.hpp"
 
 #endif  // DRONE_C__MSG__ALTITUDE_LIDAR_HPP_

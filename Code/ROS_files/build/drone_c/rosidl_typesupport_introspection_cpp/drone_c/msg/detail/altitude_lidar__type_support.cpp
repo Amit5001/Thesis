@@ -37,7 +37,7 @@ void AltitudeLidar_fini_function(void * message_memory)
   typed_message->~AltitudeLidar();
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember AltitudeLidar_message_member_array[1] = {
+static const ::rosidl_typesupport_introspection_cpp::MessageMember AltitudeLidar_message_member_array[2] = {
   {
     "distance",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
@@ -54,13 +54,30 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember AltitudeLidar
     nullptr,  // fetch(index, &value) function pointer
     nullptr,  // assign(index, value) function pointer
     nullptr  // resize(index) function pointer
+  },
+  {
+    "distance_des",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(drone_c::msg::AltitudeLidar, distance_des),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr,  // fetch(index, &value) function pointer
+    nullptr,  // assign(index, value) function pointer
+    nullptr  // resize(index) function pointer
   }
 };
 
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers AltitudeLidar_message_members = {
   "drone_c::msg",  // message namespace
   "AltitudeLidar",  // message name
-  1,  // number of fields
+  2,  // number of fields
   sizeof(drone_c::msg::AltitudeLidar),
   AltitudeLidar_message_member_array,  // message members
   AltitudeLidar_init_function,  // function to initialize message memory (memory has to be allocated)

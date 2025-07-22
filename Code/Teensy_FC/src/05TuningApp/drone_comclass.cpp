@@ -16,7 +16,7 @@ Controller_s* Drone_com::_controller_data = nullptr;
 drone_tune_t* Drone_com::_drone_tune = nullptr;
 Drone_Data_t* Drone_com::_drone_data_header = nullptr;
 CompFilter* Drone_com::_comfilter = nullptr;
-float* Drone_com::_lidar_distance = nullptr;
+Altitude_t* Drone_com::_altitude_data = nullptr;
 
 void Drone_com::onConnection(RTComSession& session) {
     Serial.printf("Session created with %s\r\n", session.address.toString());
@@ -62,7 +62,7 @@ void Drone_com::onConnection(RTComSession& session) {
 Drone_com::Drone_com(Measurement_t* meas, quat_t* q_est, attitude_t* desired_attitude, motor_t* motor_pwm,
                      attitude_t* desired_rate, attitude_t* estimated_attitude, attitude_t* estimated_rate,
                      PID_out_t* PID_stab_out, PID_out_t* PID_rate_out, Controller_s* controller_data,
-                     drone_tune_t* drone_tune, Drone_Data_t* drone_data_header, CompFilter* comfilter, float* lidar_distance)
+                     drone_tune_t* drone_tune, Drone_Data_t* drone_data_header, CompFilter* comfilter, Altitude_t* altitude_data)
     : rtcomSocket(SOCKET_ADDRESS, SOCKET_CONFIG)  // Initialize rtcomSocket with both address and config
 {
     _meas = meas;
@@ -78,7 +78,7 @@ Drone_com::Drone_com(Measurement_t* meas, quat_t* q_est, attitude_t* desired_att
     _drone_tune = drone_tune;  // Store the pointer instead of making a copy
     _drone_data_header = drone_data_header;
     _comfilter = comfilter;
-    _lidar_distance = lidar_distance;
+    _altitude_data = altitude_data;  // Store the pointer instead of making a copy
 }
 
 void Drone_com::init_com() {
@@ -221,7 +221,9 @@ void Drone_com::convert_Measurment_to_byte() {
     magwick_data[2] = _drone_tune->filter_data.low_beta;
     memcpy(magwick_data_byte, magwick_data, sizeof(magwick_data_byte));
 
-    lidar_distance_data[0] = *_lidar_distance;
+    lidar_distance_data[0] = _altitude_data->current_altitude;  // Assuming you want to send the current altitude
+    lidar_distance_data[1] = _altitude_data->desired_altitude;  // Assuming you want to send both lidar distance and desired altitude
+    // Sending both lidar distance and desired altitude
     memcpy(lidar_distance_byte, lidar_distance_data, sizeof(lidar_distance_byte));
 
 }

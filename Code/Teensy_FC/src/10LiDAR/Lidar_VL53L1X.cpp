@@ -1,4 +1,6 @@
 #include "Lidar_VL53L1X.h"
+float prev_meas= 0.0f;
+
 
 bool Lidar_VL53L1X::init_Lidar() {
     // Initialize I2C bus
@@ -17,7 +19,7 @@ bool Lidar_VL53L1X::init_Lidar() {
     }
     
     // Set timeout for sensor operations
-    sensor.setTimeout(timeout);
+    // sensor.setTimeout(timeout);
     
     // Initialize the sensor with I/O voltage mode
     if (!sensor.init(io_2v8)) {
@@ -78,10 +80,11 @@ void Lidar_VL53L1X::resetSensor() {
 float Lidar_VL53L1X::readDistance() {
     
     if (sensor.dataReady()) {
-        return float(sensor.read());
+        prev_meas = float(sensor.read());
+        return prev_meas;
     }
     
-    return 0;
+    return prev_meas;
 }
 
 bool Lidar_VL53L1X::dataReady() {

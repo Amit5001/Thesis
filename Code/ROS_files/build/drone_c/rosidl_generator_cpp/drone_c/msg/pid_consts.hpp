@@ -7,5 +7,6 @@
 #include "drone_c/msg/detail/pid_consts__struct.hpp"
 #include "drone_c/msg/detail/pid_consts__builder.hpp"
 #include "drone_c/msg/detail/pid_consts__traits.hpp"
+#include "drone_c/msg/detail/pid_consts__type_support.hpp"
 
 #endif  // DRONE_C__MSG__PID_CONSTS_HPP_

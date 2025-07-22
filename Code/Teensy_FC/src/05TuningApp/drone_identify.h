@@ -6,6 +6,7 @@
 enum class DroneMode {
     MODE_RATE = 1,
     MODE_STABILIZE = 2,
+    MODE_ALTHOLD = 3,
 };
 
 enum class DroneFilter {
@@ -33,6 +34,7 @@ typedef struct {
     std::array<float, 3> defaultSpitchPID;
     std::array<float, 3> defaultSyawPID;
     std::array<float, 2> defaultImax_stab;
+    std::array<float, 4> defaultAltPID;
 } PID_const_t;
 
 typedef struct {
@@ -55,6 +57,8 @@ typedef struct {
     bool is_armed = false;
     float voltage_reading = 0.0f;
     float current_reading = 0.0f;
+    vec3_t acc_offset = {0.0f, 0.0f, 0.0f};
+    vec3_t voltage_current_factors = {0.0f, 0.0f, 0.0f};
 } Drone_Data_t;
 
 inline void getMAC(uint8_t* pMacAddress) {
@@ -92,9 +96,15 @@ inline void getbot_param(drone_tune_t& myDrone_tune, Drone_Data_t& myDrone) {
         myDrone_tune.pid_const.defaultSpitchPID = {11.8f, 0.1f, 0.0f};
         myDrone_tune.pid_const.defaultSyawPID = {4.0f, 0.0f, 0.0f};
         myDrone_tune.pid_const.defaultImax_stab = {25.0f, 25.0f};
+
+        // myDrone_tune.pid_const.defaultAltPID = {58.16f,331.92f, 319.886f, -7.38f};  // 0- location, 1- integral, 2- velocity, 3- current
+        myDrone_tune.pid_const.defaultAltPID = {2.76f,100.08f, 6.12f, -13.43f};  // 0- location, 1- integral, 2- velocity, 3- current
+
         myDrone_tune.filter_data.std_beta = 0.1f;
         myDrone_tune.filter_data.high_beta = 0.12f;
         myDrone_tune.filter_data.low_beta = 0.05f;
+        myDrone.acc_offset = {-0.073,-0.008,0.0};
+        myDrone.voltage_current_factors = {122.22955, 64.3, 0.41};  // Calibration factors for voltage and current
         return;
     } else if (compareMac(myDrone.mac, mac2) || compareMac(myDrone.mac, mac3)) {
         myDrone_tune.pid_const.defaultRrollPID = {0.7f, 0.05f, 0.3f};
@@ -105,9 +115,14 @@ inline void getbot_param(drone_tune_t& myDrone_tune, Drone_Data_t& myDrone) {
         myDrone_tune.pid_const.defaultSpitchPID = {0.1f, 0.0f, 0.0f};
         myDrone_tune.pid_const.defaultSyawPID = {4.0f, 0.0f, 0.0f};
         myDrone_tune.pid_const.defaultImax_stab = {25.0f, 25.0f};
+
+        myDrone_tune.pid_const.defaultAltPID = {0.466f,31.57f, 3.59f, -13.222f};  // 0- location, 1- integral, 2- velocity, 3- current
+
         myDrone_tune.filter_data.std_beta = 0.1f;
         myDrone_tune.filter_data.high_beta = 0.2f;
         myDrone_tune.filter_data.low_beta = 0.05f;
+        myDrone.acc_offset = {-0.04, -0.016,0.0};
+        myDrone.voltage_current_factors = {69.441, 45.66, 0.0};  // Calibration factors for voltage and current
         return;
     } else {
         while (1) {
@@ -118,4 +133,4 @@ inline void getbot_param(drone_tune_t& myDrone_tune, Drone_Data_t& myDrone) {
     }
 }
 
-#endif
+#endif 

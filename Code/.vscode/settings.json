@@ -1,3 +1,11 @@
 {
-    "taipyStudio.gUI.elementsFilePaths": []
+    "taipyStudio.gUI.elementsFilePaths": [],
+    "python.defaultInterpreterPath": "/opt/anaconda3/envs/Thesis/bin/python",
+    "python.terminal.activateEnvironment": true,
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "terminal.integrated.env.osx": {
+        "CONDA_DEFAULT_ENV": "Thesis",
+        "CONDA_PREFIX": "/opt/anaconda3/envs/Thesis",
+        "PYTHONPATH": ""
+    }
 }

@@ -1,0 +1,37 @@
+CMake Warning (dev) at /opt/anaconda3/envs/ThesisRos/share/python_cmake_module/cmake/Modules/FindPythonExtra.cmake:52 (find_package):
+  Policy CMP0148 is not set: The FindPythonInterp and FindPythonLibs modules
+  are removed.  Run "cmake --help-policy CMP0148" for policy details.  Use
+  the cmake_policy command to set the policy and suppress this warning.
+
+Call Stack (most recent call first):
+  /opt/anaconda3/envs/ThesisRos/share/rosidl_generator_py/cmake/rosidl_generator_py_generate_interfaces.cmake:21 (find_package)
+  /opt/anaconda3/envs/ThesisRos/share/ament_cmake_core/cmake/core/ament_execute_extensions.cmake:48 (include)
+  /opt/anaconda3/envs/ThesisRos/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:286 (ament_execute_extensions)
+  CMakeLists.txt:38 (rosidl_generate_interfaces)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+ld: warning: duplicate -rpath '/opt/anaconda3/lib' ignored
+ld: warning: duplicate -rpath '/opt/anaconda3/lib' ignored
+ld: warning: duplicate -rpath '/opt/anaconda3/lib' ignored
+ld: warning: duplicate -rpath '/opt/anaconda3/lib' ignored
+ld: warning: duplicate -rpath '/opt/anaconda3/lib' ignored
+ld: warning: duplicate -rpath '/opt/anaconda3/lib' ignored
+ld: warning: duplicate -rpath '/opt/anaconda3/lib' ignored
+ld: warning: duplicate -rpath '/opt/anaconda3/lib' ignored
+ld: warning: duplicate -rpath '/opt/anaconda3/lib' ignored
+ld: warning: duplicate -rpath '/opt/anaconda3/lib' ignored
+ld: warning: duplicate -rpath '/opt/anaconda3/lib' ignored
+/opt/anaconda3/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/lib/libdrone_c__rosidl_typesupport_fastrtps_c.dylib
+[cctools-port]: generating fake signature for '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/lib/libdrone_c__rosidl_typesupport_fastrtps_c.dylib'
+/opt/anaconda3/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/lib/libdrone_c__rosidl_typesupport_introspection_c.dylib
+[cctools-port]: generating fake signature for '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/lib/libdrone_c__rosidl_typesupport_introspection_c.dylib'
+/opt/anaconda3/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/lib/libdrone_c__rosidl_typesupport_c.dylib
+[cctools-port]: generating fake signature for '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/lib/libdrone_c__rosidl_typesupport_c.dylib'
+/opt/anaconda3/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/lib/python3.11/site-packages/drone_c/drone_c_s__rosidl_typesupport_fastrtps_c.cpython-311-darwin.so
+[cctools-port]: generating fake signature for '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/lib/python3.11/site-packages/drone_c/drone_c_s__rosidl_typesupport_fastrtps_c.cpython-311-darwin.so'
+/opt/anaconda3/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/lib/python3.11/site-packages/drone_c/drone_c_s__rosidl_typesupport_introspection_c.cpython-311-darwin.so
+[cctools-port]: generating fake signature for '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/lib/python3.11/site-packages/drone_c/drone_c_s__rosidl_typesupport_introspection_c.cpython-311-darwin.so'
+/opt/anaconda3/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/lib/python3.11/site-packages/drone_c/drone_c_s__rosidl_typesupport_c.cpython-311-darwin.so
+[cctools-port]: generating fake signature for '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/lib/python3.11/site-packages/drone_c/drone_c_s__rosidl_typesupport_c.cpython-311-darwin.so'
+/opt/anaconda3/bin/install_name_tool: warning: changes being made to the file will invalidate the code signature in: /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/lib/libdrone_c__rosidl_generator_py.dylib
+[cctools-port]: generating fake signature for '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/lib/libdrone_c__rosidl_generator_py.dylib'

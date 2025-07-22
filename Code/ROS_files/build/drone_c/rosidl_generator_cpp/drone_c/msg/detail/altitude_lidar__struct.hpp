@@ -39,6 +39,7 @@ struct AltitudeLidar_
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
       this->distance = 0.0f;
+      this->distance_des = 0.0f;
     }
   }
 
@@ -49,6 +50,7 @@ struct AltitudeLidar_
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
       this->distance = 0.0f;
+      this->distance_des = 0.0f;
     }
   }
 
@@ -56,12 +58,21 @@ struct AltitudeLidar_
   using _distance_type =
     float;
   _distance_type distance;
+  using _distance_des_type =
+    float;
+  _distance_des_type distance_des;
 
   // setters for named parameter idiom
   Type & set__distance(
     const float & _arg)
   {
     this->distance = _arg;
+    return *this;
+  }
+  Type & set__distance_des(
+    const float & _arg)
+  {
+    this->distance_des = _arg;
     return *this;
   }
 
@@ -108,6 +119,9 @@ struct AltitudeLidar_
   bool operator==(const AltitudeLidar_ & other) const
   {
     if (this->distance != other.distance) {
+      return false;
+    }
+    if (this->distance_des != other.distance_des) {
       return false;
     }
     return true;

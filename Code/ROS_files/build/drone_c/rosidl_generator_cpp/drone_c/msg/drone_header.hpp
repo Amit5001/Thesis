@@ -7,5 +7,6 @@
 #include "drone_c/msg/detail/drone_header__struct.hpp"
 #include "drone_c/msg/detail/drone_header__builder.hpp"
 #include "drone_c/msg/detail/drone_header__traits.hpp"
+#include "drone_c/msg/detail/drone_header__type_support.hpp"
 
 #endif  // DRONE_C__MSG__DRONE_HEADER_HPP_

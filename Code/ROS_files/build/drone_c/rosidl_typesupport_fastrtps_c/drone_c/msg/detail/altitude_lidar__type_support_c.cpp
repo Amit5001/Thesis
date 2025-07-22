@@ -54,6 +54,11 @@ static bool _AltitudeLidar__cdr_serialize(
     cdr << ros_message->distance;
   }
 
+  // Field name: distance_des
+  {
+    cdr << ros_message->distance_des;
+  }
+
   return true;
 }
 
@@ -69,6 +74,11 @@ static bool _AltitudeLidar__cdr_deserialize(
   // Field name: distance
   {
     cdr >> ros_message->distance;
+  }
+
+  // Field name: distance_des
+  {
+    cdr >> ros_message->distance_des;
   }
 
   return true;
@@ -94,6 +104,12 @@ size_t get_serialized_size_drone_c__msg__AltitudeLidar(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
+  // field.name distance_des
+  {
+    size_t item_size = sizeof(ros_message->distance_des);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
 
   return current_alignment - initial_alignment;
 }
@@ -115,6 +131,8 @@ size_t max_serialized_size_drone_c__msg__AltitudeLidar(
 
   const size_t padding = 4;
   const size_t wchar_size = 4;
+  size_t last_member_size = 0;
+  (void)last_member_size;
   (void)padding;
   (void)wchar_size;
 
@@ -125,11 +143,33 @@ size_t max_serialized_size_drone_c__msg__AltitudeLidar(
   {
     size_t array_size = 1;
 
+    last_member_size = array_size * sizeof(uint32_t);
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+  // member: distance_des
+  {
+    size_t array_size = 1;
+
+    last_member_size = array_size * sizeof(uint32_t);
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
 
-  return current_alignment - initial_alignment;
+  size_t ret_val = current_alignment - initial_alignment;
+  if (is_plain) {
+    // All members are plain, and type is not empty.
+    // We still need to check that the in-memory alignment
+    // is the same as the CDR mandated alignment.
+    using DataType = drone_c__msg__AltitudeLidar;
+    is_plain =
+      (
+      offsetof(DataType, distance_des) +
+      last_member_size
+      ) == ret_val;
+  }
+
+  return ret_val;
 }
 
 static size_t _AltitudeLidar__max_serialized_size(char & bounds_info)

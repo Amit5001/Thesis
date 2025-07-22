@@ -31,7 +31,7 @@ _colcon_prefix_chain_sh_source_script() {
 
 # source chained prefixes
 # setting COLCON_CURRENT_PREFIX avoids relying on the build time prefix of the sourced script
-COLCON_CURRENT_PREFIX="/opt/anaconda3/envs/ros2"
+COLCON_CURRENT_PREFIX="/opt/anaconda3/envs/ThesisRos"
 _colcon_prefix_chain_sh_source_script "$COLCON_CURRENT_PREFIX/local_setup.sh"
 
 

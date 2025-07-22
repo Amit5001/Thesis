@@ -3,5 +3,7 @@ drone_filter:
   kalman: 2
 
 drone_mode:
-  acro: 1
-  stablize: 2
+  Acro: 1
+  Stabilize: 2
+  AltHold: 3
+

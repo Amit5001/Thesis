@@ -21,6 +21,7 @@ extern "C"
 typedef struct drone_c__msg__AltitudeLidar
 {
   float distance;
+  float distance_des;
 } drone_c__msg__AltitudeLidar;
 
 // Struct for a sequence of drone_c__msg__AltitudeLidar.

@@ -7,5 +7,6 @@
 #include "drone_c/msg/detail/filter__struct.hpp"
 #include "drone_c/msg/detail/filter__builder.hpp"
 #include "drone_c/msg/detail/filter__traits.hpp"
+#include "drone_c/msg/detail/filter__type_support.hpp"
 
 #endif  // DRONE_C__MSG__FILTER_HPP_

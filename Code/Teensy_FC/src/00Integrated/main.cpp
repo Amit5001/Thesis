@@ -12,6 +12,7 @@
 #include "Var_types.h"
 #include "drone_identify.h"
 #include "Lidar_VL53L1X.h"
+#include "FC_Helpers.h"  // Your new header file
 
 /*
 ------------------------------------------ Global Variables ------------------------------------------
@@ -25,14 +26,16 @@ Controller_s controller_data;
 Motors motors(MOTOR1_PIN, MOTOR2_PIN, MOTOR3_PIN, MOTOR4_PIN);
 
 // LiDAR Configuration
-bool io_2v8 = true;  // Use 2.8V IO
-uint16_t TimingBudget = 33000;  // 33ms
-uint16_t MeasurementPeriod = 33;  // 33ms - new measurement after 33ms, Which is 30Hz (30 measurements per second)
-uint16_t Timeout = 1000;  // 1 seconds
-uint8_t xshut_pin = 26;  // Pin for XSHUT control
-Lidar_VL53L1X lidar(true, VL53L1X::Long, TimingBudget, MeasurementPeriod, Timeout, xshut_pin, Wire2);
-float lidar_distance = 0;  // Variable to store the distance read from the LiDAR sensor
+bool io_2v8 = false;
+static const uint16_t TimingBudget = 33000;
+static const uint16_t Timeout = 500;
+static const uint16_t Period = 33;
+uint8_t xshut_pin = 26;
+Lidar_VL53L1X lidar(io_2v8, VL53L1X::Long, TimingBudget, Period, Timeout, xshut_pin, Wire2);
+float lidar_distance = 0;
+int thrust = 0;
 
+// All your other global variables...
 Measurement_t meas;
 IMU_Func imu(&meas, SAMPLE_RATE);
 drone_tune_t drone_tune;
@@ -43,24 +46,25 @@ motor_t motor_pwm;
 attitude_t desired_rate;
 attitude_t estimated_attitude;
 attitude_t estimated_rate;
+Altitude_t altitude_data;
 PID_out_t PID_stab_out;
 PID_out_t PID_rate_out;
 Drone_Data_t drone_data_header;
-Voltmeter voltmeter(&drone_data_header, A3, A2, 122.22955, 0.0518, 0.41);  // Calibration factors for voltage and current
+Voltmeter voltmeter(&drone_data_header, A3, A2);
 Drone_com drone_com(&meas, &q_est, &desired_attitude, &motor_pwm,
                     &desired_rate, &estimated_attitude, &estimated_rate, &PID_stab_out, &PID_rate_out,
-                    &controller_data, &drone_tune, &drone_data_header, &comp_filter, &meas.lidar_distance);
+                    &controller_data, &drone_tune, &drone_data_header, &comp_filter, &altitude_data);
 
+// Timers
 elapsedMicros motor_timer;
 elapsedMicros stab_timer;
 elapsedMicros imu_timer;
 elapsedMicros send_data_timer;
 elapsedMicros estimated_filter_timer;
-elapsedMicros altitude_timer;
+elapsedMicros lidar_meas_timer;
+elapsedMicros alt_PID_timer;
 
-
-
-
+// Other objects
 EKF ekf(&meas, 1 / SAMPLE_RATE);
 STD_Filter std_filter(&meas, SAMPLE_RATE);
 
@@ -68,21 +72,12 @@ double t_PID_s = 0.0f;
 double t_PID_r = 0.0f;
 float actual_dt = 0.0f;
 
-
-/*
------------------------------------------- Prototypes ------------------------------------------
-*/
-void update_controller();
-void controller_threshold();
-void mapping_controller();
-void check_arming_state();
-void estimated_state_method();
-
-
 void setup() {
     Serial.begin(115200);
     drone_com.init_com();
-    imu.init_IMU();
+    getbot_param(drone_tune, drone_data_header);
+    imu.init_IMU(drone_data_header.acc_offset);
+    voltmeter.init_voltmeter();
 
     ELRSSerial.begin(CRSF_BAUDRATE, SERIAL_8N1);
     if (!ELRSSerial) {
@@ -99,190 +94,82 @@ void setup() {
     }
 
     ELRS.begin(ELRSSerial);
-    getbot_param(drone_tune, drone_data_header);  // Extracting the parameters for this specific drone.
     setPID_params(&drone_tune.pid_const);
     comp_filter.set_beta(&drone_tune.filter_data);
     // imu.Initial_Calibration();
     motors.Motors_init();
 }
 
-////////////////////////////////////////////////////////////////////////
-
 void loop() {
-    // Update ELRS data: Reading from the receiver and updating controller_data variable.
-    update_controller();
-    check_arming_state();
-    if (imu_timer >= IMU_PERIOD) {  /// rate loop
+    // Update ELRS data using namespace function
+    FC_Helpers::updateController(ELRS, controller_data);
+    FC_Helpers::checkArmingState(controller_data, drone_data_header, motors);
+    FC_Helpers::checkMode(controller_data, drone_data_header);
+
+    if (imu_timer >= IMU_PERIOD) {
         actual_dt = (double)imu_timer / 1000000.0f;
         imu.Read_IMU();
         std_filter.all_filter();
-        estimated_state_method();
+        FC_Helpers::estimatedStateMethod(drone_data_header, ekf, comp_filter, meas, estimated_attitude, q_est);
         voltmeter.read_bat_data();
+        FC_Helpers::mappingController(controller_data, drone_data_header, desired_attitude, desired_rate, meas, altitude_data);
+        // Serial.println(altitude_data.desired_altitude);
 
-        if (altitude_timer >= ALT_PERIOD){
-            meas.lidar_distance = lidar.readDistance() /1000.0f; //converting mm to m
-            altitude_timer = 0;
+        if (lidar_meas_timer >= ALT_PERIOD) {
+            altitude_data.current_altitude = lidar.readDistance() / 1000.0f;
+            lidar_meas_timer = 0;
         }
 
         if (drone_data_header.is_armed) {
-            // Get Actual rates:
             estimated_rate.roll = meas.gyroDEG.x;
             estimated_rate.pitch = meas.gyroDEG.y;
             estimated_rate.yaw = meas.gyroDEG.z;
-
-            if ((controller_data.aux1 > 1500) && (stab_timer >= STAB_PERIOD)) {  // Stabilize mode:
-                // Calculating dt for the PID- in seconds:
-                t_PID_s = (double)stab_timer / 1000000.0f;
-                drone_data_header.drone_mode = DroneMode::MODE_STABILIZE;
-                mapping_controller();
-                PID_stab_out = PID_stab(desired_attitude, estimated_attitude, t_PID_s);
-                PID_stab_out.PID_ret.pitch = -1 * PID_stab_out.PID_ret.pitch;
-                desired_rate = PID_stab_out.PID_ret;
-                desired_rate.yaw = map(controller_data.yaw, CONTROLLER_MIN, CONTROLLER_MAX, MAX_RATE, -MAX_RATE);
-                stab_timer = 0;
-
-                if (controller_data.aux1 <2000){ // A condition for altitude hold
+            thrust = controller_data.throttle;
+            
+            switch(drone_data_header.drone_mode) {
+                case DroneMode::MODE_RATE:
+                    // Serial.println("Rate Mode");
+                    estimated_rate.roll = meas.gyroDEG.x;
+                    estimated_rate.pitch = meas.gyroDEG.y;
+                    estimated_rate.yaw = meas.gyroDEG.z;
+                    break;
                     
-                }
-
-            } else if (controller_data.aux1 < 1500) {  // Acro mode:
-                drone_data_header.drone_mode = DroneMode::MODE_RATE;
-                mapping_controller();
+                case DroneMode::MODE_STABILIZE:
+                    // Serial.println("Stabilize Mode");
+                    FC_Helpers::stabilizeLoop(stab_timer, controller_data, drone_data_header, 
+                                            desired_attitude, estimated_attitude, desired_rate, PID_stab_out, meas);
+                    break;
+                    
+                case DroneMode::MODE_ALTHOLD:
+                    // Serial.println("Alt-Hold Mode");
+                    FC_Helpers::stabilizeLoop(stab_timer, controller_data, drone_data_header, 
+                                                  desired_attitude, estimated_attitude, desired_rate, PID_stab_out, meas);
+                    if (alt_PID_timer >= ALT_PERIOD) {
+                        thrust = Altitude_Controller(&altitude_data, drone_data_header.current_reading);
+                        thrust = constrain(thrust, 1100, 1900);  // Constrain thrust to a safe range
+                        alt_PID_timer = 0;
+                    }
+                    Serial.println(thrust);
+                    break;
             }
+
             if ((controller_data.throttle > 1000) && (motor_timer >= MOTOR_PERIOD)) {
                 t_PID_r = (float)motor_timer / 1000000.0f;
                 PID_rate_out = PID_rate(desired_rate, estimated_rate, t_PID_r);
-                motors.Motor_Mix(PID_rate_out.PID_ret, controller_data.throttle);
+                // Serial.println(thrust);
+                motors.Motor_Mix(PID_rate_out.PID_ret, thrust);
                 motors.set_motorPWM();
                 motor_timer = 0;
             }
 
-            // Getting the motors struct to send data back:
             motor_pwm = motors.Get_motor();
         }
 
         if (send_data_timer >= SEND_DATA_PERIOD) {
-            // // Reading liDAR distance
-            // lidar_distance = lidar.readDistance();
-            // if (lidar_distance < 0) {
-            //     lidar_distance = 0;  // Ensure distance is non-negative
-            // }
-            // Serial.println(lidar_distance);  // Print LiDAR distance for debugging
-            // Send data through the drone_com class:
             drone_com.convert_Measurment_to_byte();
             drone_com.send_data();
             send_data_timer = 0;
         }
         imu_timer = 0;
-    }
-}
-
-void update_controller() {
-    // Update the controller data:
-    ELRS.update();
-    controller_data.throttle = ELRS.getChannel(3);
-    // controller_data.throttle = map(controller_data.throttle, 1000, 2000, 1000, 2000);
-    controller_data.roll = ELRS.getChannel(1);
-    controller_data.pitch = ELRS.getChannel(2);
-    controller_data.yaw = ELRS.getChannel(4);
-    controller_data.aux1 = ELRS.getChannel(5);
-    controller_data.aux2 = ELRS.getChannel(6);
-    controller_data.aux3 = ELRS.getChannel(7);
-    controller_data.aux4 = ELRS.getChannel(8);
-}
-
-void controller_threshold() {
-    if ((controller_data.roll <= CONTROLL_THR_MAX) && (controller_data.roll >= CONTROLL_THR_MIN)) {
-        controller_data.roll = 1500;
-    }
-    if ((controller_data.pitch <= CONTROLL_THR_MAX) && (controller_data.pitch >= CONTROLL_THR_MIN)) {
-        controller_data.pitch = 1500;
-    }
-    if ((controller_data.yaw <= CONTROLL_THR_MAX) && (controller_data.yaw >= CONTROLL_THR_MIN)) {
-        controller_data.yaw = 1500;
-    }
-}
-
-void mapping_controller() {
-    controller_threshold();
-    switch (drone_data_header.drone_mode)  // This switch statement is a placeholder for any specific conditions you might want to check.
-    {
-        case DroneMode::MODE_STABILIZE:
-            desired_attitude.roll = map(controller_data.roll, CONTROLLER_MIN, CONTROLLER_MAX, -MAX_ANGLE, MAX_ANGLE);
-            desired_attitude.pitch = map(controller_data.pitch, CONTROLLER_MIN, CONTROLLER_MAX, MAX_ANGLE, -MAX_ANGLE);
-            desired_attitude.yaw = map(controller_data.yaw, CONTROLLER_MIN, CONTROLLER_MAX, MAX_ANGLE, -MAX_ANGLE);  // cahnge here
-            break;
-        case DroneMode::MODE_RATE:
-            desired_rate.roll = map(controller_data.roll, CONTROLLER_MIN, CONTROLLER_MAX, -MAX_RATE, MAX_RATE);
-            desired_rate.pitch = map(controller_data.pitch, CONTROLLER_MIN, CONTROLLER_MAX, -MAX_RATE, MAX_RATE);
-            desired_rate.yaw = map(controller_data.yaw, CONTROLLER_MIN, CONTROLLER_MAX, MAX_RATE, -MAX_RATE);
-            break;
-
-        default:
-            break;
-    }
-}
-
-void resetMicrocontroller() {
-    // Trigger a software reset
-    if (controller_data.aux3 > 1700) {
-        Serial.println(" reset ");
-        SCB_AIRCR = 0x05FA0004;
-    }
-}
-
-void check_arming_state() {
-    if (controller_data.aux2 > 1500) {  // Switch is in high position
-        if ( controller_data.throttle < (MOTOR_START + 100)) {
-            drone_data_header.is_armed = true;
-        }
-    } else {  // Switch is in low position
-        drone_data_header.is_armed = false;
-        motors.Disarm();  // Ensure motors are stopped when disarmed
-        Reset_PID();      // Reset PID states when disarmed
-        resetMicrocontroller();
-    }
-}
-
-void channel_estimated() {
-    if (controller_data.aux4 > 1700) {
-        drone_data_header.filter_mode = DroneFilter::KALMAN;
-    } else {
-        drone_data_header.filter_mode = DroneFilter::COMPCLASS;
-    }
-}
-
-void estimated_state_method() {
-    channel_estimated();
-    switch (drone_data_header.filter_mode) {
-        case DroneFilter::KALMAN:
-            return ekf.run_kalman(&estimated_attitude, &q_est);
-        case DroneFilter::COMPCLASS:
-            comp_filter.UpdateQ(&meas.gyroRAD, &meas.acc, DT);
-            comp_filter.GetEulerRPYdeg(&estimated_attitude);
-            comp_filter.GetQuaternion(&q_est);  
-            return;
-        default:
-            return ekf.run_kalman(&estimated_attitude, &q_est);
-    }
-}
-
-void mapping_thrust(){
-    // If the throttle is above the middle point, the desired altitude will increase, if its below the middle point, the desired altitude will decrease.
-    // This function maps the throttle to adding or subtracting from the current altitude.
-    if (controller_data.throttle > CONTROLL_THR_MAX) {
-        // If the throttle is above the middle point, we increase the desired altitude.
-        meas.desired_alt += 0.1f;  // Increase by 0.1 meters
-    } else if (controller_data.throttle < CONTROLL_THR_MIN) {
-        // If the throttle is below the middle point, we decrease the desired altitude.
-        meas.desired_alt -= 0.1f;  // Decrease by 0.1 meters
-    }
-    // Ensure the desired altitude does not go below zero
-    if (meas.desired_alt < 0.0f) {
-        meas.desired_alt = 0.0f;  // Reset desired altitude to 0 if it goes below 0
-    }
-    // Ensure the desired altitude wont exceed maximum altitude of 3
-    if (meas.desired_alt > 3.0f) {
-        meas.desired_alt = 3.0f;  // Reset desired altitude to 3 if it goes above 3
     }
 }

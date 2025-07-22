@@ -29,6 +29,13 @@ inline void to_flow_style_yaml(
   {
     out << "distance: ";
     rosidl_generator_traits::value_to_yaml(msg.distance, out);
+    out << ", ";
+  }
+
+  // member: distance_des
+  {
+    out << "distance_des: ";
+    rosidl_generator_traits::value_to_yaml(msg.distance_des, out);
   }
   out << "}";
 }  // NOLINT(readability/fn_size)
@@ -44,6 +51,16 @@ inline void to_block_style_yaml(
     }
     out << "distance: ";
     rosidl_generator_traits::value_to_yaml(msg.distance, out);
+    out << "\n";
+  }
+
+  // member: distance_des
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "distance_des: ";
+    rosidl_generator_traits::value_to_yaml(msg.distance_des, out);
     out << "\n";
   }
 }  // NOLINT(readability/fn_size)

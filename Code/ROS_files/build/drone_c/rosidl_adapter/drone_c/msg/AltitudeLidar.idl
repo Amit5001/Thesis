@@ -7,6 +7,8 @@ module drone_c {
   module msg {
     struct AltitudeLidar {
       float distance;
+
+      float distance_des;
     };
   };
 };

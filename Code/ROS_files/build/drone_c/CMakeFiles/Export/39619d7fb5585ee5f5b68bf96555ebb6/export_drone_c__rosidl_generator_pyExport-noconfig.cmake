@@ -8,7 +8,7 @@ set(CMAKE_IMPORT_FILE_VERSION 1)
 # Import target "drone_c::drone_c__rosidl_generator_py" for configuration ""
 set_property(TARGET drone_c::drone_c__rosidl_generator_py APPEND PROPERTY IMPORTED_CONFIGURATIONS NOCONFIG)
 set_target_properties(drone_c::drone_c__rosidl_generator_py PROPERTIES
-  IMPORTED_LINK_DEPENDENT_LIBRARIES_NOCONFIG "drone_c::drone_c__rosidl_generator_c;drone_c::drone_c__rosidl_typesupport_c;std_msgs::std_msgs__rosidl_generator_py;builtin_interfaces::builtin_interfaces__rosidl_generator_py;sensor_msgs::sensor_msgs__rosidl_generator_py;geometry_msgs::geometry_msgs__rosidl_generator_py"
+  IMPORTED_LINK_DEPENDENT_LIBRARIES_NOCONFIG "drone_c::drone_c__rosidl_generator_c"
   IMPORTED_LOCATION_NOCONFIG "${_IMPORT_PREFIX}/lib/libdrone_c__rosidl_generator_py.dylib"
   IMPORTED_SONAME_NOCONFIG "@rpath/libdrone_c__rosidl_generator_py.dylib"
   )

@@ -1,7 +1,7 @@
 CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/drone_header__functions.c.o: \
   /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/build/drone_c/rosidl_generator_c/drone_c/msg/detail/drone_header__functions.c \
   /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/build/drone_c/rosidl_generator_c/drone_c/msg/detail/drone_header__functions.h \
-  /opt/anaconda3/envs/ros2/lib/clang/14.0.6/include/stdbool.h \
+  /opt/anaconda3/envs/ThesisRos/lib/clang/18/include/stdbool.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/stdlib.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdlib.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/Availability.h \
@@ -47,7 +47,7 @@ CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_size_t.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_uid_t.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/resource.h \
-  /opt/anaconda3/envs/ros2/lib/clang/14.0.6/include/stdint.h \
+  /opt/anaconda3/envs/ThesisRos/lib/clang/18/include/stdint.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/stdint.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_types/_uint8_t.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_types/_uint16_t.h \
@@ -75,11 +75,17 @@ CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_abort.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_dev_t.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/_types/_mode_t.h \
-  /opt/anaconda3/envs/ros2/include/rosidl_runtime_c/rosidl_runtime_c/visibility_control.h \
+  /opt/anaconda3/envs/ThesisRos/include/rosidl_runtime_c/rosidl_runtime_c/visibility_control.h \
   /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/build/drone_c/rosidl_generator_c/drone_c/msg/rosidl_generator_c__visibility_control.h \
   /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/build/drone_c/rosidl_generator_c/drone_c/msg/detail/drone_header__struct.h \
-  /opt/anaconda3/envs/ros2/lib/clang/14.0.6/include/stddef.h \
-  /opt/anaconda3/envs/ros2/lib/clang/14.0.6/include/__stddef_max_align_t.h \
+  /opt/anaconda3/envs/ThesisRos/lib/clang/18/include/stddef.h \
+  /opt/anaconda3/envs/ThesisRos/lib/clang/18/include/__stddef_ptrdiff_t.h \
+  /opt/anaconda3/envs/ThesisRos/lib/clang/18/include/__stddef_size_t.h \
+  /opt/anaconda3/envs/ThesisRos/lib/clang/18/include/__stddef_rsize_t.h \
+  /opt/anaconda3/envs/ThesisRos/lib/clang/18/include/__stddef_wchar_t.h \
+  /opt/anaconda3/envs/ThesisRos/lib/clang/18/include/__stddef_null.h \
+  /opt/anaconda3/envs/ThesisRos/lib/clang/18/include/__stddef_max_align_t.h \
+  /opt/anaconda3/envs/ThesisRos/lib/clang/18/include/__stddef_offsetof.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/assert.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_assert.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_static_assert.h \
@@ -92,9 +98,9 @@ CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/secure/_strings.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/secure/_common.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/secure/_string.h \
-  /opt/anaconda3/envs/ros2/include/rcutils/rcutils/allocator.h \
-  /opt/anaconda3/envs/ros2/include/rcutils/rcutils/macros.h \
+  /opt/anaconda3/envs/ThesisRos/include/rcutils/rcutils/allocator.h \
+  /opt/anaconda3/envs/ThesisRos/include/rcutils/rcutils/macros.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/TargetConditionals.h \
-  /opt/anaconda3/envs/ros2/include/rcutils/rcutils/types/rcutils_ret.h \
-  /opt/anaconda3/envs/ros2/include/rcutils/rcutils/visibility_control.h \
-  /opt/anaconda3/envs/ros2/include/rcutils/rcutils/visibility_control_macros.h
+  /opt/anaconda3/envs/ThesisRos/include/rcutils/rcutils/types/rcutils_ret.h \
+  /opt/anaconda3/envs/ThesisRos/include/rcutils/rcutils/visibility_control.h \
+  /opt/anaconda3/envs/ThesisRos/include/rcutils/rcutils/visibility_control_macros.h

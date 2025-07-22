@@ -1,1 +1,1 @@
-['-DPython3_EXECUTABLE=/opt/anaconda3/envs/ros2/bin/python3']
+['-DPython3_EXECUTABLE=/opt/anaconda3/envs/ThesisRos/bin/python', '-DPython3_LIBRARY=/opt/anaconda3/envs/ThesisRos/lib/libpython3.11.dylib', '-DPython3_INCLUDE_DIR=/opt/anaconda3/envs/ThesisRos/include/python3.11', '-DPython3_NumPy_INCLUDE_DIRS=/opt/anaconda3/envs/ThesisRos/lib/python3.11/site-packages/numpy/core/include', '-DPYTHON_EXECUTABLE=/opt/anaconda3/envs/ThesisRos/bin/python']

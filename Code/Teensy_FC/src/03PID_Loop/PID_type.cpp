@@ -58,10 +58,14 @@ void setPID_params(PID_const_t* pid_consts) {
     stab_params.Alpha_pitch = (1.0f / 2.0f * PI * cutoff_freq * DT + 1.0f);
     stab_params.Alpha_yaw = (1.0f / 2.0f * PI * cutoff_freq * DT + 1.0f);
 
+    float alt_cutoff_freq = 1.5f;
+    altitude_params.Alpha_alt = (1.0f / (2.0f * PI * alt_cutoff_freq * alt_DT + 1.0f));  // Example value for alpha, adjust as needed
+    altitude_params.Imax_alt = 800.0f;  // Example value for Imax_alt, adjust as needed
 
-    float alt_cutoff_freq = 2.0f;  // Example value for altitude control, adjust as needed
-    altitude_params.Alpha_alt = (1.0f / 2.0f * PI * alt_cutoff_freq * DT + 1.0f);  // Example value for alpha, adjust as needed
-    altitude_params.Imax_alt = 40.0f;  // Example value for Imax_alt, adjust as needed
+    altitude_params.AltP = pid_consts->defaultAltPID[0];  
+    altitude_params.AltI = pid_consts->defaultAltPID[1];  
+    altitude_params.AltD = pid_consts->defaultAltPID[2];  
+    altitude_params.current_P = pid_consts->defaultAltPID[3];
 }
 
 PID_out_t PID_rate(attitude_t des_rate, attitude_t actual_rate, float DT) {  // Actual rate will be in deg/s
@@ -133,29 +137,41 @@ PID_out_t PID_stab(attitude_t des_angle, attitude_t angle, float DT) {
     return stab_out;  // This output is the desired rate. now we can use the PID_rate function to get the motor input values
 }
 
-uint16_t Altitude_Controller(float des_alt, float actual_alt, float current) {
-    altitude_out.error = des_alt - actual_alt;
-    altitude_out.P_term = altitude_params.AltP * altitude_out.error;
-    altitude_out.I_term = altitude_out.prev_Iterm + (altitude_params.AltI / 2) * (altitude_out.error + altitude_out.prev_err) * DT;
-    altitude_out.D_term = altitude_params.AltD * altitude_params.Alpha_alt * (altitude_out.error - altitude_out.prev_err + altitude_out.D_term);
-
+uint16_t Altitude_Controller(Altitude_t* altitude_data, float current) {
+    altitude_out.error = altitude_data->desired_altitude - altitude_data->current_altitude;
+    altitude_out.P_term = altitude_params.AltP * altitude_data->current_altitude;
+    altitude_out.I_term = altitude_out.prev_Iterm + (altitude_params.AltI / 2) * (altitude_out.error + altitude_out.prev_err) * alt_DT;
+    altitude_data->altitude_derivative = altitude_params.Alpha_alt * (altitude_data->current_altitude + altitude_data->altitude_derivative - altitude_out.prev_altitude);
+    altitude_out.D_term = altitude_params.AltD * altitude_data->altitude_derivative;
     // Cap the I term
     altitude_out.I_term = constrain(altitude_out.I_term, -altitude_params.Imax_alt, altitude_params.Imax_alt);
+
+    altitude_out.P_current = altitude_params.current_P * current;
 
     // Time propagation for relevant variables:
     altitude_out.prev_err = altitude_out.error;
     altitude_out.prev_Iterm = altitude_out.I_term;
     altitude_out.prev_Dterm = altitude_out.D_term;
+    altitude_out.prev_altitude = altitude_data->current_altitude;  // Update previous altitude for next derivative calculation
 
-    altitude_out.PID_ret = altitude_out.P_term + altitude_out.I_term + altitude_out.D_term; // This suppose to be the desired thrust / throttle
-
-    return altitude_out.PID_ret;  // Replace with actual altitude PID logic
+    altitude_out.PID_ret = altitude_out.P_term + altitude_out.I_term + altitude_out.D_term + altitude_out.P_current; // This suppose to be the desired thrust / throttle
+    // Serial.print(altitude_data->desired_altitude);
+    // Serial.print(" ");
+    // Serial.print(altitude_data->current_altitude);
+    // Serial.print(" ");
+    // Serial.println(altitude_out.PID_ret);
+    return 1330 + altitude_out.PID_ret;  // Replace with actual altitude PID logic
 }
 
 void Reset_PID() {
-    rate_out.prev_err = {0.0, 0.0, 0.0};
-    rate_out.prev_Iterm = {0.0, 0.0, 0.0};
-    stab_out.prev_err = {0.0, 0.0, 0.0};
-    stab_out.prev_Iterm = {0.0, 0.0, 0.0};
-    rate_err = {0.0, 0.0, 0.0};
+    altitude_out.prev_altitude = 0.0f;  // Reset previous altitude for altitude PID
+    altitude_out.prev_err = 0.0f;  // Reset previous error for altitude PID
+    altitude_out.prev_Iterm = 0.0f;  // Reset previous I term for altitude PID
+    altitude_out.prev_Dterm = 0.0f;  // Reset previous D term
+    altitude_out.PID_ret = 0.0f;  // Reset PID output for altitude PID
+    altitude_out.error = 0.0f;  // Reset altitude error
+    altitude_out.P_term = 0.0f;  // Reset P term for altitude PID
+    altitude_out.I_term = 0.0f;  // Reset I term for altitude PID
+    altitude_out.D_term = 0.0f;  // Reset D term for altitude PID
+    altitude_out.P_current = 0.0f;  // Reset current P term for altitude PID
 }

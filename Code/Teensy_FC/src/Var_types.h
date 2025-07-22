@@ -4,18 +4,19 @@
 #include <Arduino.h>
 #include <string>
 #include <array>
-#include "drone_identify.h"
 // #define ESC_FREQUENCY 500  // Frequency of the ESCs
 const float G = 9.80665; // Gravity constant in m/s^2
 #define ESC_FREQUENCY 400
 #define STAB_FREQUENCY ESC_FREQUENCY / 2  // Frequency of the STAB
+#define LIDAR_PERIOD 30
 
 static const float SAMPLE_RATE = 416.0f;
 static const float DT = 1.0f / SAMPLE_RATE;
+static const float alt_DT = 1.0f / LIDAR_PERIOD;
 
 const unsigned long STAB_PERIOD = 1000000 / STAB_FREQUENCY;  // 200 Hz period in microseconds
 const unsigned long MOTOR_PERIOD = 1000000 / ESC_FREQUENCY;  // 1,000,000 us / frequency in Hz
-const unsigned long ALT_PERIOD = 1000000 / 30;  // 50 Hz period in microseconds
+const unsigned long ALT_PERIOD = 1000000 / LIDAR_PERIOD;  // 30 Hz period in microseconds
 const unsigned long IMU_PERIOD = 1000000 / SAMPLE_RATE;
 const unsigned long SEND_DATA_PERIOD = 1000000 / 50;  // 50 Hz
 
@@ -183,6 +184,7 @@ typedef struct Altitude_PID_s {
     float AltP;
     float AltI;
     float AltD;
+    float current_P = 0.0;
     float Alpha_alt;
     float AltD_tau;
     float Imax_alt;
@@ -191,15 +193,24 @@ typedef struct Altitude_PID_s {
 
 typedef struct Altitude_PID_out_s {
     float error = 0.0;
+    float prev_altitude = 0.0;  // Previous altitude for derivative calculation
     float P_term = 0.0;
     float I_term = 0.0;
     float D_term = 0.0;
+    float P_current = 0.0;  // Current altitude for P term calculation
     float PID_ret = 0.0;
     float prev_err = 0.0;
     float prev_Iterm = 0.0;
     float prev_Dterm = 0.0;
 
 } Altitude_PID_out_t;
+
+typedef struct Altitude_s {
+    float desired_altitude = 0.0f;  // Desired altitude in meters
+    float current_altitude = 0.0f;  // Current altitude in meters
+    float altitude_error = 0.0f;     // Error in altitude
+    float altitude_derivative = 0.0f;  // Derivative of altitude
+} Altitude_t;
 
 typedef struct motor_s {
     int M1_pin;

@@ -32,8 +32,14 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
 endif()
 
-# Set default install directory permissions.
+# Set path to fallback-tool for dependency-resolution.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/opt/anaconda3/envs/ros2/bin/llvm-objdump")
+  set(CMAKE_OBJDUMP "/opt/anaconda3/envs/ThesisRos/bin/llvm-objdump")
 endif()
 
+string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
+       "${CMAKE_INSTALL_MANIFEST_FILES}")
+if(CMAKE_INSTALL_LOCAL_ONLY)
+  file(WRITE "/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/build/drone_c/drone_c__py/install_local_manifest.txt"
+     "${CMAKE_INSTALL_MANIFEST_CONTENT}")
+endif()

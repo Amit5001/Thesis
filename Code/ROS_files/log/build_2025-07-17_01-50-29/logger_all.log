@@ -1,0 +1,192 @@
+[0.096s] [34mcolcon[0m [1;30mDEBUG[0m [32mCommand line arguments: ['/opt/anaconda3/envs/ThesisRos/bin/colcon', 'build', '--packages-select', 'drone_c', '--cmake-force-configure', '--cmake-args', '-DPython3_EXECUTABLE=/opt/anaconda3/envs/ThesisRos/bin/python', '-DPython3_LIBRARY=/opt/anaconda3/envs/ThesisRos/lib/libpython3.11.dylib', '-DPython3_INCLUDE_DIR=/opt/anaconda3/envs/ThesisRos/include/python3.11', '-DPython3_NumPy_INCLUDE_DIRS=/opt/anaconda3/envs/ThesisRos/lib/python3.11/site-packages/numpy/core/include', '-DPYTHON_EXECUTABLE=/opt/anaconda3/envs/ThesisRos/bin/python'][0m
+[0.096s] [34mcolcon[0m [1;30mDEBUG[0m [32mParsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=10, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=['drone_c'], packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, cmake_args=['-DPython3_EXECUTABLE=/opt/anaconda3/envs/ThesisRos/bin/python', '-DPython3_LIBRARY=/opt/anaconda3/envs/ThesisRos/lib/libpython3.11.dylib', '-DPython3_INCLUDE_DIR=/opt/anaconda3/envs/ThesisRos/include/python3.11', '-DPython3_NumPy_INCLUDE_DIRS=/opt/anaconda3/envs/ThesisRos/lib/python3.11/site-packages/numpy/core/include', '-DPYTHON_EXECUTABLE=/opt/anaconda3/envs/ThesisRos/bin/python'], cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=True, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x101eeead0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x101eee410>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x101eee410>>)[0m
+[0.117s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(colcon_meta) check parameters
+[0.117s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(recursive) check parameters
+[0.117s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(ignore) check parameters
+[0.117s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(path) check parameters
+[0.117s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(colcon_meta) discover
+[0.117s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(recursive) discover
+[0.117s] [34mcolcon.colcon_core.package_discovery[0m [1;30mINFO[0m Crawling recursively for packages in '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files'
+[0.117s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.117s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extension 'ignore'
+[0.117s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extension 'ignore_ament_install'
+[0.117s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extensions ['colcon_pkg']
+[0.117s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extension 'colcon_pkg'
+[0.117s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extensions ['colcon_meta']
+[0.117s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extension 'colcon_meta'
+[0.117s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extensions ['ros']
+[0.117s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extension 'ros'
+[0.130s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extensions ['cmake', 'python']
+[0.130s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extension 'cmake'
+[0.130s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extension 'python'
+[0.130s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extensions ['python_setup_py']
+[0.130s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(.) by extension 'python_setup_py'
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(bag_csv) by extensions ['ignore', 'ignore_ament_install']
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(bag_csv) by extension 'ignore'
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(bag_csv) by extension 'ignore_ament_install'
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(bag_csv) by extensions ['colcon_pkg']
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(bag_csv) by extension 'colcon_pkg'
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(bag_csv) by extensions ['colcon_meta']
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(bag_csv) by extension 'colcon_meta'
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(bag_csv) by extensions ['ros']
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(bag_csv) by extension 'ros'
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(bag_csv) by extensions ['cmake', 'python']
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(bag_csv) by extension 'cmake'
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(bag_csv) by extension 'python'
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(bag_csv) by extensions ['python_setup_py']
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(bag_csv) by extension 'python_setup_py'
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(build) by extension 'ignore'
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(build) ignored
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(install) by extension 'ignore'
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(install) ignored
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(log) by extension 'ignore'
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(log) ignored
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(rosbag2_2025_07_14-15_41_07) by extensions ['ignore', 'ignore_ament_install']
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(rosbag2_2025_07_14-15_41_07) by extension 'ignore'
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(rosbag2_2025_07_14-15_41_07) by extension 'ignore_ament_install'
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(rosbag2_2025_07_14-15_41_07) by extensions ['colcon_pkg']
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(rosbag2_2025_07_14-15_41_07) by extension 'colcon_pkg'
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(rosbag2_2025_07_14-15_41_07) by extensions ['colcon_meta']
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(rosbag2_2025_07_14-15_41_07) by extension 'colcon_meta'
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(rosbag2_2025_07_14-15_41_07) by extensions ['ros']
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(rosbag2_2025_07_14-15_41_07) by extension 'ros'
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(rosbag2_2025_07_14-15_41_07) by extensions ['cmake', 'python']
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(rosbag2_2025_07_14-15_41_07) by extension 'cmake'
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(rosbag2_2025_07_14-15_41_07) by extension 'python'
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(rosbag2_2025_07_14-15_41_07) by extensions ['python_setup_py']
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(rosbag2_2025_07_14-15_41_07) by extension 'python_setup_py'
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src) by extension 'ignore'
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src) by extension 'ignore_ament_install'
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src) by extensions ['colcon_pkg']
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src) by extension 'colcon_pkg'
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src) by extensions ['colcon_meta']
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src) by extension 'colcon_meta'
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src) by extensions ['ros']
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src) by extension 'ros'
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src) by extensions ['cmake', 'python']
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src) by extension 'cmake'
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src) by extension 'python'
+[0.131s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src) by extensions ['python_setup_py']
+[0.132s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src) by extension 'python_setup_py'
+[0.132s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/drone_c) by extensions ['ignore', 'ignore_ament_install']
+[0.132s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/drone_c) by extension 'ignore'
+[0.132s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/drone_c) by extension 'ignore_ament_install'
+[0.132s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/drone_c) by extensions ['colcon_pkg']
+[0.132s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/drone_c) by extension 'colcon_pkg'
+[0.132s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/drone_c) by extensions ['colcon_meta']
+[0.132s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/drone_c) by extension 'colcon_meta'
+[0.132s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/drone_c) by extensions ['ros']
+[0.132s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/drone_c) by extension 'ros'
+[0.133s] [34mcolcon.colcon_core.package_identification[0m [1;30mDEBUG[0m [32mPackage 'src/drone_c' with type 'ros.ament_cmake' and name 'drone_c'[0m
+[0.133s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/drone_tuner) by extensions ['ignore', 'ignore_ament_install']
+[0.133s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/drone_tuner) by extension 'ignore'
+[0.133s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/drone_tuner) by extension 'ignore_ament_install'
+[0.133s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/drone_tuner) by extensions ['colcon_pkg']
+[0.133s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/drone_tuner) by extension 'colcon_pkg'
+[0.133s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/drone_tuner) by extensions ['colcon_meta']
+[0.133s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/drone_tuner) by extension 'colcon_meta'
+[0.134s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/drone_tuner) by extensions ['ros']
+[0.134s] [34mcolcon.colcon_core.package_identification[0m [1;30mLevel 1[0m _identify(src/drone_tuner) by extension 'ros'
+[0.134s] [34mcolcon.colcon_core.package_identification[0m [1;30mDEBUG[0m [32mPackage 'src/drone_tuner' with type 'ros.ament_python' and name 'drone_tuner'[0m
+[0.134s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(recursive) using defaults
+[0.134s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(ignore) discover
+[0.134s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(ignore) using defaults
+[0.134s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(path) discover
+[0.134s] [34mcolcon.colcon_core.package_discovery[0m [1;30mLevel 1[0m discover_packages(path) using defaults
+[0.142s] [34mcolcon.colcon_core.package_selection[0m [1;30mINFO[0m Skipping not selected package 'drone_tuner' in 'src/drone_tuner'
+[0.142s] [34mcolcon.colcon_core.verb[0m [1;30mLevel 5[0m set package 'drone_c' build argument 'cmake_args' from command line to '['-DPython3_EXECUTABLE=/opt/anaconda3/envs/ThesisRos/bin/python', '-DPython3_LIBRARY=/opt/anaconda3/envs/ThesisRos/lib/libpython3.11.dylib', '-DPython3_INCLUDE_DIR=/opt/anaconda3/envs/ThesisRos/include/python3.11', '-DPython3_NumPy_INCLUDE_DIRS=/opt/anaconda3/envs/ThesisRos/lib/python3.11/site-packages/numpy/core/include', '-DPYTHON_EXECUTABLE=/opt/anaconda3/envs/ThesisRos/bin/python']'
+[0.142s] [34mcolcon.colcon_core.verb[0m [1;30mLevel 5[0m set package 'drone_c' build argument 'cmake_target' from command line to 'None'
+[0.142s] [34mcolcon.colcon_core.verb[0m [1;30mLevel 5[0m set package 'drone_c' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.142s] [34mcolcon.colcon_core.verb[0m [1;30mLevel 5[0m set package 'drone_c' build argument 'cmake_clean_cache' from command line to 'False'
+[0.142s] [34mcolcon.colcon_core.verb[0m [1;30mLevel 5[0m set package 'drone_c' build argument 'cmake_clean_first' from command line to 'False'
+[0.142s] [34mcolcon.colcon_core.verb[0m [1;30mLevel 5[0m set package 'drone_c' build argument 'cmake_force_configure' from command line to 'True'
+[0.142s] [34mcolcon.colcon_core.verb[0m [1;30mLevel 5[0m set package 'drone_c' build argument 'ament_cmake_args' from command line to 'None'
+[0.142s] [34mcolcon.colcon_core.verb[0m [1;30mLevel 5[0m set package 'drone_c' build argument 'catkin_cmake_args' from command line to 'None'
+[0.142s] [34mcolcon.colcon_core.verb[0m [1;30mLevel 5[0m set package 'drone_c' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.142s] [34mcolcon.colcon_core.verb[0m [1;30mDEBUG[0m [32mBuilding package 'drone_c' with the following arguments: {'ament_cmake_args': None, 'build_base': '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/build/drone_c', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': ['-DPython3_EXECUTABLE=/opt/anaconda3/envs/ThesisRos/bin/python', '-DPython3_LIBRARY=/opt/anaconda3/envs/ThesisRos/lib/libpython3.11.dylib', '-DPython3_INCLUDE_DIR=/opt/anaconda3/envs/ThesisRos/include/python3.11', '-DPython3_NumPy_INCLUDE_DIRS=/opt/anaconda3/envs/ThesisRos/lib/python3.11/site-packages/numpy/core/include', '-DPYTHON_EXECUTABLE=/opt/anaconda3/envs/ThesisRos/bin/python'], 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': True, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c', 'merge_install': False, 'path': '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/src/drone_c', 'symlink_install': False, 'test_result_base': None}[0m
+[0.142s] [34mcolcon.colcon_core.executor[0m [1;30mINFO[0m Executing jobs using 'parallel' executor
+[0.143s] [34mcolcon.colcon_parallel_executor.executor.parallel[0m [1;30mDEBUG[0m [32mrun_until_complete[0m
+[0.143s] [34mcolcon.colcon_ros.task.ament_cmake.build[0m [1;30mINFO[0m Building ROS package in '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/src/drone_c' with build type 'ament_cmake'
+[0.143s] [34mcolcon.colcon_cmake.task.cmake.build[0m [1;30mINFO[0m Building CMake package in '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/src/drone_c'
+[0.144s] [34mcolcon.colcon_core.plugin_system[0m [1;30mINFO[0m Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.145s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.145s] [34mcolcon.colcon_core.shell[0m [1;30mDEBUG[0m [32mSkip shell extension 'dsv' for command environment[0m
+[0.145s] [34mcolcon.colcon_ros.prefix_path.ament[0m [1;30mWARNING[0m [33mThe path '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c' in the environment variable AMENT_PREFIX_PATH doesn't exist[0m
+[0.145s] [34mcolcon.colcon_ros.prefix_path.catkin[0m [1;30mWARNING[0m [33mThe path '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c' in the environment variable CMAKE_PREFIX_PATH doesn't exist[0m
+[0.157s] [34mcolcon.colcon_core.event_handler.log_command[0m [1;30mDEBUG[0m [32mInvoking command in '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/build/drone_c': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/anaconda3/envs/ThesisRos CONDA_PROMPT_MODIFIER=(ThesisRos) SHLVL=2 _=/opt/anaconda3/envs/ThesisRos/bin/env __CF_USER_TEXT_ENCODING=0x1F5:0x0:0x0 /opt/anaconda3/envs/ThesisRos/bin/cmake /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/src/drone_c -DPython3_EXECUTABLE=/opt/anaconda3/envs/ThesisRos/bin/python -DPython3_LIBRARY=/opt/anaconda3/envs/ThesisRos/lib/libpython3.11.dylib -DPython3_INCLUDE_DIR=/opt/anaconda3/envs/ThesisRos/include/python3.11 -DPython3_NumPy_INCLUDE_DIRS=/opt/anaconda3/envs/ThesisRos/lib/python3.11/site-packages/numpy/core/include -DPYTHON_EXECUTABLE=/opt/anaconda3/envs/ThesisRos/bin/python -DCMAKE_INSTALL_PREFIX=/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c[0m
+[4.616s] [34mcolcon.colcon_core.event_handler.log_command[0m [1;30mDEBUG[0m [32mInvoked command in '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/build/drone_c' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/anaconda3/envs/ThesisRos CONDA_PROMPT_MODIFIER=(ThesisRos) SHLVL=2 _=/opt/anaconda3/envs/ThesisRos/bin/env __CF_USER_TEXT_ENCODING=0x1F5:0x0:0x0 /opt/anaconda3/envs/ThesisRos/bin/cmake /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/src/drone_c -DPython3_EXECUTABLE=/opt/anaconda3/envs/ThesisRos/bin/python -DPython3_LIBRARY=/opt/anaconda3/envs/ThesisRos/lib/libpython3.11.dylib -DPython3_INCLUDE_DIR=/opt/anaconda3/envs/ThesisRos/include/python3.11 -DPython3_NumPy_INCLUDE_DIRS=/opt/anaconda3/envs/ThesisRos/lib/python3.11/site-packages/numpy/core/include -DPYTHON_EXECUTABLE=/opt/anaconda3/envs/ThesisRos/bin/python -DCMAKE_INSTALL_PREFIX=/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c[0m
+[4.622s] [34mcolcon.colcon_core.event_handler.log_command[0m [1;30mDEBUG[0m [32mInvoking command in '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/build/drone_c': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/anaconda3/envs/ThesisRos CONDA_PROMPT_MODIFIER=(ThesisRos) SHLVL=2 _=/opt/anaconda3/envs/ThesisRos/bin/env __CF_USER_TEXT_ENCODING=0x1F5:0x0:0x0 /opt/anaconda3/envs/ThesisRos/bin/cmake --build /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/build/drone_c -- -j10 -l10[0m
+[9.164s] [34mcolcon.colcon_core.event_handler.log_command[0m [1;30mDEBUG[0m [32mInvoked command in '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/build/drone_c' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/anaconda3/envs/ThesisRos CONDA_PROMPT_MODIFIER=(ThesisRos) SHLVL=2 _=/opt/anaconda3/envs/ThesisRos/bin/env __CF_USER_TEXT_ENCODING=0x1F5:0x0:0x0 /opt/anaconda3/envs/ThesisRos/bin/cmake --build /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/build/drone_c -- -j10 -l10[0m
+[9.926s] [34mcolcon.colcon_core.event_handler.log_command[0m [1;30mDEBUG[0m [32mInvoking command in '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/build/drone_c': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/anaconda3/envs/ThesisRos CONDA_PROMPT_MODIFIER=(ThesisRos) SHLVL=2 _=/opt/anaconda3/envs/ThesisRos/bin/env __CF_USER_TEXT_ENCODING=0x1F5:0x0:0x0 /opt/anaconda3/envs/ThesisRos/bin/cmake --install /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/build/drone_c[0m
+[10.190s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m create_environment_scripts_only(drone_c)
+[10.190s] [34mcolcon.colcon_core.event_handler.log_command[0m [1;30mDEBUG[0m [32mInvoked command in '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/build/drone_c' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/anaconda3/envs/ThesisRos CONDA_PROMPT_MODIFIER=(ThesisRos) SHLVL=2 _=/opt/anaconda3/envs/ThesisRos/bin/env __CF_USER_TEXT_ENCODING=0x1F5:0x0:0x0 /opt/anaconda3/envs/ThesisRos/bin/cmake --install /Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/build/drone_c[0m
+[10.192s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c' for CMake module files
+[10.193s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c' for CMake config files
+[10.194s] [34mcolcon.colcon_core.shell[0m [1;30mLevel 1[0m create_environment_hook('drone_c', 'cmake_prefix_path')
+[10.194s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating environment hook '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/share/drone_c/hook/cmake_prefix_path.ps1'
+[10.194s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating environment descriptor '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/share/drone_c/hook/cmake_prefix_path.dsv'
+[10.195s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating environment hook '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/share/drone_c/hook/cmake_prefix_path.sh'
+[10.195s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/lib'
+[10.196s] [34mcolcon.colcon_core.shell[0m [1;30mLevel 1[0m create_environment_hook('drone_c', 'dyld_library_path')
+[10.196s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating environment hook '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/share/drone_c/hook/dyld_library_path.ps1'
+[10.196s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating environment descriptor '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/share/drone_c/hook/dyld_library_path.dsv'
+[10.196s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating environment hook '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/share/drone_c/hook/dyld_library_path.sh'
+[10.196s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/bin'
+[10.197s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/lib/pkgconfig/drone_c.pc'
+[10.197s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/lib/python3.11/site-packages'
+[10.197s] [34mcolcon.colcon_core.shell[0m [1;30mLevel 1[0m create_environment_hook('drone_c', 'pythonpath')
+[10.197s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating environment hook '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/share/drone_c/hook/pythonpath.ps1'
+[10.197s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating environment descriptor '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/share/drone_c/hook/pythonpath.dsv'
+[10.197s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating environment hook '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/share/drone_c/hook/pythonpath.sh'
+[10.198s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/bin'
+[10.198s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating package script '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/share/drone_c/package.ps1'
+[10.198s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating package descriptor '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/share/drone_c/package.dsv'
+[10.199s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating package script '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/share/drone_c/package.sh'
+[10.199s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating package script '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/share/drone_c/package.bash'
+[10.200s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating package script '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/share/drone_c/package.zsh'
+[10.200s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m create_file_with_runtime_dependencies(/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/share/colcon-core/packages/drone_c)
+[10.904s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m create_environment_scripts_only(drone_c)
+[10.904s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c' for CMake module files
+[10.905s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c' for CMake config files
+[10.906s] [34mcolcon.colcon_core.shell[0m [1;30mLevel 1[0m create_environment_hook('drone_c', 'cmake_prefix_path')
+[10.906s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating environment hook '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/share/drone_c/hook/cmake_prefix_path.ps1'
+[10.906s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating environment descriptor '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/share/drone_c/hook/cmake_prefix_path.dsv'
+[10.907s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating environment hook '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/share/drone_c/hook/cmake_prefix_path.sh'
+[10.907s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/lib'
+[10.907s] [34mcolcon.colcon_core.shell[0m [1;30mLevel 1[0m create_environment_hook('drone_c', 'dyld_library_path')
+[10.907s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating environment hook '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/share/drone_c/hook/dyld_library_path.ps1'
+[10.907s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating environment descriptor '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/share/drone_c/hook/dyld_library_path.dsv'
+[10.908s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating environment hook '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/share/drone_c/hook/dyld_library_path.sh'
+[10.908s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/bin'
+[10.908s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/lib/pkgconfig/drone_c.pc'
+[10.908s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/lib/python3.11/site-packages'
+[10.908s] [34mcolcon.colcon_core.shell[0m [1;30mLevel 1[0m create_environment_hook('drone_c', 'pythonpath')
+[10.908s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating environment hook '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/share/drone_c/hook/pythonpath.ps1'
+[10.908s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating environment descriptor '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/share/drone_c/hook/pythonpath.dsv'
+[10.909s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating environment hook '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/share/drone_c/hook/pythonpath.sh'
+[10.909s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m checking '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/bin'
+[10.909s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating package script '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/share/drone_c/package.ps1'
+[10.910s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating package descriptor '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/share/drone_c/package.dsv'
+[10.910s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating package script '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/share/drone_c/package.sh'
+[10.910s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating package script '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/share/drone_c/package.bash'
+[10.911s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating package script '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/share/drone_c/package.zsh'
+[10.911s] [34mcolcon.colcon_core.environment[0m [1;30mLevel 1[0m create_file_with_runtime_dependencies(/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/drone_c/share/colcon-core/packages/drone_c)
+[10.911s] [34mcolcon.colcon_parallel_executor.executor.parallel[0m [1;30mDEBUG[0m [32mclosing loop[0m
+[10.911s] [34mcolcon.colcon_parallel_executor.executor.parallel[0m [1;30mDEBUG[0m [32mloop closed[0m
+[10.911s] [34mcolcon.colcon_parallel_executor.executor.parallel[0m [1;30mDEBUG[0m [32mrun_until_complete finished with '0'[0m
+[10.911s] [34mcolcon.colcon_core.event_reactor[0m [1;30mDEBUG[0m [32mjoining thread[0m
+[10.912s] [34mcolcon.colcon_core.event_reactor[0m [1;30mDEBUG[0m [32mjoined thread[0m
+[10.912s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating prefix script '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/local_setup.ps1'
+[10.913s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating prefix util module '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/_local_setup_util_ps1.py'
+[10.914s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating prefix chain script '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/setup.ps1'
+[10.915s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating prefix script '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/local_setup.sh'
+[10.915s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating prefix util module '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/_local_setup_util_sh.py'
+[10.915s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating prefix chain script '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/setup.sh'
+[10.916s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating prefix script '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/local_setup.bash'
+[10.916s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating prefix chain script '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/setup.bash'
+[10.917s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating prefix script '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/local_setup.zsh'
+[10.918s] [34mcolcon.colcon_core.shell[0m [1;30mINFO[0m Creating prefix chain script '/Users/amitgedj/Library/CloudStorage/OneDrive-Personal/University/MsC/Thesis/Code/ROS_files/install/setup.zsh'

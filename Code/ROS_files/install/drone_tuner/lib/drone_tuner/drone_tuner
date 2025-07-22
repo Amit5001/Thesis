@@ -1,4 +1,4 @@
-#!/opt/anaconda3/envs/ros2/bin/python3.10
+#!/opt/anaconda3/envs/ThesisRos/bin/python3.11
 # EASY-INSTALL-ENTRY-SCRIPT: 'drone-tuner==0.0.0','console_scripts','drone_tuner'
 import re
 import sys
