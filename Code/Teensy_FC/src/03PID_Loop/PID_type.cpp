@@ -18,6 +18,13 @@ PID_Params_t stab_params;  // PID parameters for stabilization controller
 Altitude_PID_t altitude_params;  // PID parameters for altitude control
 Altitude_PID_out_t altitude_out;  // Output of altitude PID controller
 
+float prev_derr_roll_R = 0.0f;
+float prev_derr_pitch_R = 0.0f;
+float prev_derr_yaw_R = 0.0f;
+float prev_derr_roll_S = 0.0f;
+float prev_derr_pitch_S = 0.0f;
+float prev_derr_yaw_S = 0.0f;
+
 // Initialization of PID parameters. Need to run at setup in the main code.
 void setPID_params(PID_const_t* pid_consts) {
     rate_params.RollP = pid_consts->defaultRrollPID[0];
@@ -50,13 +57,13 @@ void setPID_params(PID_const_t* pid_consts) {
     // Alphas for the derivative term:
     // Larger tau means slower response, more filtering. smaller tau means faster response, less filtering.
     float cutoff_freq = 5.0f;
-    rate_params.Alpha_roll = (1.0f / 2.0f * PI * cutoff_freq * DT + 1.0f);
-    rate_params.Alpha_pitch = (1.0f / 2.0f * PI * cutoff_freq * DT + 1.0f);
-    rate_params.Alpha_yaw = (1.0f / 2.0f * PI * cutoff_freq * DT + 1.0f);
+    rate_params.Alpha_roll = (1.0f / (2.0f * PI * cutoff_freq * DT + 1.0f));
+    rate_params.Alpha_pitch = (1.0f / (2.0f * PI * cutoff_freq * DT + 1.0f));
+    rate_params.Alpha_yaw = (1.0f / (2.0f * PI * cutoff_freq * DT + 1.0f));
 
-    stab_params.Alpha_roll = (1.0f / 2.0f * PI * cutoff_freq * DT + 1.0f);
-    stab_params.Alpha_pitch = (1.0f / 2.0f * PI * cutoff_freq * DT + 1.0f);
-    stab_params.Alpha_yaw = (1.0f / 2.0f * PI * cutoff_freq * DT + 1.0f);
+    stab_params.Alpha_roll = (1.0f / (2.0f * PI * cutoff_freq * DT + 1.0f));
+    stab_params.Alpha_pitch = (1.0f / (2.0f * PI * cutoff_freq * DT + 1.0f));
+    stab_params.Alpha_yaw = (1.0f / (2.0f * PI * cutoff_freq * DT + 1.0f));
 
     float alt_cutoff_freq = 1.5f;
     altitude_params.Alpha_alt = (1.0f / (2.0f * PI * alt_cutoff_freq * alt_DT + 1.0f));  // Example value for alpha, adjust as needed
@@ -84,9 +91,13 @@ PID_out_t PID_rate(attitude_t des_rate, attitude_t actual_rate, float DT) {  // 
     rate_out.I_term.yaw = rate_out.prev_Iterm.yaw + (rate_params.YawI / 2) * (rate_err.yaw + rate_out.prev_err.yaw) * DT;
 
     // Apply HPF to the derivative term
-    rate_out.D_term.roll = rate_params.RollD * rate_params.Alpha_roll * (rate_err.roll - rate_out.prev_err.roll + rate_out.D_term.roll);
-    rate_out.D_term.pitch = rate_params.PitchD * rate_params.Alpha_pitch * (rate_err.pitch - rate_out.prev_err.pitch + rate_out.D_term.pitch);
-    rate_out.D_term.yaw = rate_params.YawD * rate_params.Alpha_yaw * (rate_err.yaw - rate_out.prev_err.yaw + rate_out.D_term.yaw);
+    prev_derr_roll_R = rate_params.Alpha_roll * (rate_err.roll - rate_out.prev_err.roll + prev_derr_roll_R);
+    prev_derr_pitch_R = rate_params.Alpha_pitch * (rate_err.pitch - rate_out.prev_err.pitch + prev_derr_pitch_R);
+    prev_derr_yaw_R = rate_params.Alpha_yaw * (rate_err.yaw - rate_out.prev_err.yaw + prev_derr_yaw_R);
+
+    rate_out.D_term.roll = rate_params.RollD * prev_derr_roll_R;
+    rate_out.D_term.pitch = rate_params.PitchD * prev_derr_pitch_R;
+    rate_out.D_term.yaw = rate_params.YawD * prev_derr_yaw_R;
 
     // Cap the I term
     rate_out.I_term.roll = constrain(rate_out.I_term.roll, -rate_params.Imax_roll, rate_params.Imax_roll);
@@ -118,9 +129,13 @@ PID_out_t PID_stab(attitude_t des_angle, attitude_t angle, float DT) {
     stab_out.I_term.yaw = stab_out.prev_Iterm.yaw + (stab_params.YawI / 2) * (angle_err.yaw + stab_out.prev_err.yaw) * DT;
 
     // Apply HPF to the derivative term
-    stab_out.D_term.roll = stab_params.RollD * stab_params.Alpha_roll * (angle_err.roll - stab_out.prev_err.roll + stab_out.D_term.roll);
-    stab_out.D_term.pitch = stab_params.PitchD * stab_params.Alpha_pitch * (angle_err.pitch - stab_out.prev_err.pitch + stab_out.D_term.pitch);
-    stab_out.D_term.yaw = stab_params.YawD * stab_params.Alpha_yaw * (angle_err.yaw - stab_out.prev_err.yaw + stab_out.D_term.yaw);
+    prev_derr_roll_S = stab_params.Alpha_roll * (angle_err.roll - stab_out.prev_err.roll + prev_derr_roll_S);
+    prev_derr_pitch_S = stab_params.Alpha_pitch * (angle_err.pitch - stab_out.prev_err.pitch + prev_derr_pitch_S);
+    prev_derr_yaw_S = stab_params.Alpha_yaw * (angle_err.yaw - stab_out.prev_err.yaw + prev_derr_yaw_S);
+
+    stab_out.D_term.roll = stab_params.RollD * prev_derr_roll_S;
+    stab_out.D_term.pitch = stab_params.PitchD * prev_derr_pitch_S;
+    stab_out.D_term.yaw = stab_params.YawD * prev_derr_yaw_S;
     // Cap the I term
 
     stab_out.I_term.roll = constrain(stab_out.I_term.roll, -stab_params.Imax_roll, stab_params.Imax_roll);
