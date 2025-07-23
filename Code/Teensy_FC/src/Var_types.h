@@ -8,7 +8,7 @@
 const float G = 9.80665; // Gravity constant in m/s^2
 #define ESC_FREQUENCY 400
 #define STAB_FREQUENCY ESC_FREQUENCY / 2  // Frequency of the STAB
-#define LIDAR_PERIOD 30
+#define LIDAR_PERIOD 33
 
 static const float SAMPLE_RATE = 416.0f;
 static const float DT = 1.0f / SAMPLE_RATE;
@@ -207,6 +207,7 @@ typedef struct Altitude_PID_out_s {
 
 typedef struct Altitude_s {
     float desired_altitude = 0.0f;  // Desired altitude in meters
+    float filtered_altitude = 0.0f;  // Filtered altitude in meters
     float current_altitude = 0.0f;  // Current altitude in meters
     float altitude_error = 0.0f;     // Error in altitude
     float altitude_derivative = 0.0f;  // Derivative of altitude

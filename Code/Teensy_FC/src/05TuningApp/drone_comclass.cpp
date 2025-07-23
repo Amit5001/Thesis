@@ -21,7 +21,7 @@ Altitude_t* Drone_com::_altitude_data = nullptr;
 void Drone_com::onConnection(RTComSession& session) {
     Serial.printf("Session created with %s\r\n", session.address.toString());
     socketSession = &session;
-    Serial.print("connect");
+    Serial.println("connect");
 
     session.on(PID_CONSTS_RETURN, [](const uint8_t* bytes, size_t size) {
         if (socketSession == nullptr || size != sizeof(float) * 15) {

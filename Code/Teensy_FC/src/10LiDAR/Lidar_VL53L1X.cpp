@@ -53,15 +53,15 @@ bool Lidar_VL53L1X::init_Lidar() {
 void Lidar_VL53L1X::initXSHUT() {
     if (xshut_pin >= 0) {
         pinMode(xshut_pin, OUTPUT);
-        Serial.print("XSHUT pin ");
-        Serial.print(xshut_pin);
-        Serial.println(" configured as output");
+        // Serial.print("XSHUT pin ");
+        // Serial.print(xshut_pin);
+        // Serial.println(" configured as output");
     }
 }
 
 void Lidar_VL53L1X::resetSensor() {
     if (xshut_pin >= 0) {
-        Serial.println("Performing sensor reset sequence...");
+        // Serial.println("Performing sensor reset sequence...");
         
         // Put sensor in hardware standby
         digitalWrite(xshut_pin, LOW);
@@ -71,7 +71,7 @@ void Lidar_VL53L1X::resetSensor() {
         digitalWrite(xshut_pin, HIGH);
         delay(200); // Wait for boot sequence (1.2ms + margin)
         
-        Serial.println("Sensor reset complete");
+        // Serial.println("Sensor reset complete");
     } else {
         Serial.println("XSHUT pin not configured - skipping reset sequence");
     }

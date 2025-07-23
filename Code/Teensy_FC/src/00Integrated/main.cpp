@@ -74,6 +74,7 @@ float actual_dt = 0.0f;
 
 void setup() {
     Serial.begin(115200);
+
     drone_com.init_com();
     getbot_param(drone_tune, drone_data_header);
     imu.init_IMU(drone_data_header.acc_offset);
@@ -89,14 +90,12 @@ void setup() {
     // Initialize the LiDAR sensor
     if (!lidar.init_Lidar()) {
         Serial.println("Failed to initialize LiDAR sensor");
-    } else {
-        Serial.println("LiDAR sensor initialized successfully");
     }
 
     ELRS.begin(ELRSSerial);
     setPID_params(&drone_tune.pid_const);
     comp_filter.set_beta(&drone_tune.filter_data);
-    // imu.Initial_Calibration();
+    imu.Initial_Calibration();
     motors.Motors_init();
 }
 
@@ -117,6 +116,9 @@ void loop() {
 
         if (lidar_meas_timer >= ALT_PERIOD) {
             altitude_data.current_altitude = lidar.readDistance() / 1000.0f;
+            Serial.println(altitude_data.current_altitude);
+            // Filtering the lidar wit LPF:
+            altitude_data.filtered_altitude = 0.4f * altitude_data.filtered_altitude + 0.6f * altitude_data.current_altitude;
             lidar_meas_timer = 0;
         }
 
@@ -124,7 +126,6 @@ void loop() {
             estimated_rate.roll = meas.gyroDEG.x;
             estimated_rate.pitch = meas.gyroDEG.y;
             estimated_rate.yaw = meas.gyroDEG.z;
-            thrust = controller_data.throttle;
             
             switch(drone_data_header.drone_mode) {
                 case DroneMode::MODE_RATE:
@@ -132,12 +133,15 @@ void loop() {
                     estimated_rate.roll = meas.gyroDEG.x;
                     estimated_rate.pitch = meas.gyroDEG.y;
                     estimated_rate.yaw = meas.gyroDEG.z;
+                    thrust = controller_data.throttle;
                     break;
                     
                 case DroneMode::MODE_STABILIZE:
                     // Serial.println("Stabilize Mode");
                     FC_Helpers::stabilizeLoop(stab_timer, controller_data, drone_data_header, 
                                             desired_attitude, estimated_attitude, desired_rate, PID_stab_out, meas);
+                    thrust = controller_data.throttle;
+
                     break;
                     
                 case DroneMode::MODE_ALTHOLD:
@@ -151,6 +155,7 @@ void loop() {
                     }
                     Serial.println(thrust);
                     break;
+                    
             }
 
             if ((controller_data.throttle > 1000) && (motor_timer >= MOTOR_PERIOD)) {

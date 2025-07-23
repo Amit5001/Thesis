@@ -58,7 +58,7 @@ void setPID_params(PID_const_t* pid_consts) {
     stab_params.Alpha_pitch = (1.0f / 2.0f * PI * cutoff_freq * DT + 1.0f);
     stab_params.Alpha_yaw = (1.0f / 2.0f * PI * cutoff_freq * DT + 1.0f);
 
-    float alt_cutoff_freq = 1.5f;
+    float alt_cutoff_freq = 10.0f;
     altitude_params.Alpha_alt = (1.0f / (2.0f * PI * alt_cutoff_freq * alt_DT + 1.0f));  // Example value for alpha, adjust as needed
     altitude_params.Imax_alt = 800.0f;  // Example value for Imax_alt, adjust as needed
 
@@ -137,11 +137,11 @@ PID_out_t PID_stab(attitude_t des_angle, attitude_t angle, float DT) {
     return stab_out;  // This output is the desired rate. now we can use the PID_rate function to get the motor input values
 }
 
-uint16_t Altitude_Controller(Altitude_t* altitude_data, float current) {
-    altitude_out.error = altitude_data->desired_altitude - altitude_data->current_altitude;
-    altitude_out.P_term = altitude_params.AltP * altitude_data->current_altitude;
+float Altitude_Controller(Altitude_t* altitude_data, float current) {
+    altitude_out.error = altitude_data->desired_altitude - altitude_data->filtered_altitude;
+    altitude_out.P_term = altitude_params.AltP *  altitude_out.error;
     altitude_out.I_term = altitude_out.prev_Iterm + (altitude_params.AltI / 2) * (altitude_out.error + altitude_out.prev_err) * alt_DT;
-    altitude_data->altitude_derivative = altitude_params.Alpha_alt * (altitude_data->current_altitude + altitude_data->altitude_derivative - altitude_out.prev_altitude);
+    altitude_data->altitude_derivative = altitude_params.Alpha_alt * ( altitude_out.error + altitude_data->altitude_derivative -  altitude_out.prev_err);
     altitude_out.D_term = altitude_params.AltD * altitude_data->altitude_derivative;
     // Cap the I term
     altitude_out.I_term = constrain(altitude_out.I_term, -altitude_params.Imax_alt, altitude_params.Imax_alt);
@@ -152,7 +152,7 @@ uint16_t Altitude_Controller(Altitude_t* altitude_data, float current) {
     altitude_out.prev_err = altitude_out.error;
     altitude_out.prev_Iterm = altitude_out.I_term;
     altitude_out.prev_Dterm = altitude_out.D_term;
-    altitude_out.prev_altitude = altitude_data->current_altitude;  // Update previous altitude for next derivative calculation
+    altitude_out.prev_altitude = altitude_data->filtered_altitude;  // Update previous altitude for next derivative calculation
 
     altitude_out.PID_ret = altitude_out.P_term + altitude_out.I_term + altitude_out.D_term + altitude_out.P_current; // This suppose to be the desired thrust / throttle
     // Serial.print(altitude_data->desired_altitude);

@@ -236,3 +236,48 @@ def adaptive_hpf(df, signal_col, time_col, cutoff_freq):
             filtered_signal[i] = alpha * (filtered_signal[i-1] + signal[i] - signal[i-1])
     
     return pd.Series(filtered_signal, index=df.index), pd.Series(alpha_values, index=df.index)
+
+
+def adaptive_LPF(df, signal_col, time_col, cutoff_freq):
+    """
+    Low-Pass Filter for pandas DataFrame with variable time steps
+    
+    Args:
+        df: pandas DataFrame
+        signal_col: name of the signal column to filter
+        time_col: name of the time column
+        cutoff_freq: cutoff frequency in Hz
+    
+    Returns:
+        filtered_signal: pandas Series with filtered values
+        alpha_values: pandas Series with alpha values used for each sample
+    """
+    # Get signal and time arrays
+    signal = df[signal_col].values
+    time = df[time_col].values
+    
+    # Initialize output arrays
+    filtered_signal = np.zeros_like(signal)
+    alpha_values = np.zeros_like(signal)
+    
+    # Define cutoff frequency
+    fc = cutoff_freq  # Hz
+    RC = 1 / (2 * np.pi * fc)  # RC time constant
+    
+    # Apply adaptive LPF
+    for i in range(len(signal)):
+        if i == 0:
+            filtered_signal[i] = signal[i]  # First sample
+            alpha_values[i] = 0
+        else:
+            # Calculate actual dt between consecutive samples
+            dt = time[i] - time[i-1]
+            
+            # Calculate alpha for this specific dt
+            alpha = dt / (RC + dt)
+            alpha_values[i] = alpha
+            
+            # Apply LPF: y[n] = y[n-1] + alpha * (x[n] - y[n-1])
+            filtered_signal[i] = filtered_signal[i-1] + alpha * (signal[i] - filtered_signal[i-1])
+    
+    return pd.Series(filtered_signal, index=df.index), pd.Series(alpha_values, index=df.index)

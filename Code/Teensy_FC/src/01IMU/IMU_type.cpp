@@ -134,8 +134,11 @@ void IMU_Func::Read_IMU() {
     _IMU.read();
     // _meas->acc.x = _IMU.a.x * ACC_SENS * G - Acc_bias.x*G - _meas->acc_bias.x;
     // _meas->acc.y = _IMU.a.y * ACC_SENS * G - Acc_bias.y*G - _meas->acc_bias.y;
+    
     _meas->acc.x = _IMU.a.x * ACC_SENS * G - _Acc_bias.x*G;
     _meas->acc.y = _IMU.a.y * ACC_SENS * G - _Acc_bias.y*G;
+    // if (abs(_IMU.a.x)<0.1){_meas->acc.y = 0;}
+    // if (abs(_IMU.a.y)<0.1){_meas->acc.y = 0;}
 
     _meas->acc.z = _IMU.a.z * ACC_SENS * G;
     if (abs(_meas->acc.x) < IMU_THRESHOLD) { _meas->acc.x = 0;}
@@ -157,7 +160,7 @@ void IMU_Func::Initial_Calibration(){
 
     int start_time = millis();
     int num_samples = 0;
-    while (millis() - start_time < 10000){
+    while (millis() - start_time < 5000){
       _IMU.read();
       float x = _IMU.g.x * GYRO_SENS;
       float y = _IMU.g.y * GYRO_SENS;

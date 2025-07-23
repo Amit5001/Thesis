@@ -21,7 +21,7 @@ class IMU_Func{
         int ACC_LPF_EN;    // Accelerometer Low Pass Filter Enable
         float GYRO_SENS;   // Gyro Sensitivity
         float ACC_SENS;    // Accelerometer Sensitivity
-        const float IMU_THRESHOLD = 0.05;
+        const float IMU_THRESHOLD = 0.1 * G;
         vec3_t Gyro_bias = {0.0,0.0,0.0};
         vec3_t _Acc_bias = {0.0,0.0,0.0};
 

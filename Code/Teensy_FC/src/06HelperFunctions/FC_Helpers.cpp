@@ -87,9 +87,7 @@ namespace FC_Helpers {
                                         MAX_ALTITUDE_RATE * 1000, 0) / 1000.0f;
                 }
                 
-                // Apply rate to altitude (assuming this runs at regular intervals)
-                // You'll need to multiply by dt (time step) for proper rate control
-                altitude_data.desired_altitude += altitude_rate * (DT);  // actual_dt should be your loop time
+                altitude_data.desired_altitude += altitude_rate * (alt_DT);  // actual_dt should be your loop time
                 
                 // Clamp altitude limits
                 if (altitude_data.desired_altitude < 0.0f) {
